@@ -31,7 +31,13 @@ export class SentimentService {
                                 let sentiments : Sentiment[] = new Array();
                                 let data = response.json().data;
                                 for (let i = 0; i < tweets.length; i++) {
-                                    sentiments.push({username: tweets[i].user, emotion: data[i].polarity, status: tweets[i].text, avatarUrl: tweets[i].profileImageUrl, date: tweets[i].createdAt});
+                                    sentiments.push({
+                                        username: tweets[i].user, 
+                                        emotion: data[i].polarity, 
+                                        status: tweets[i].text, 
+                                        avatarUrl: tweets[i].profileImageUrl, 
+                                        date: tweets[i].createdAt
+                                    });
                                 }
                                 
                                 return sentiments;

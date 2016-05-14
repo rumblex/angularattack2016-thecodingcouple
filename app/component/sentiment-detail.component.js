@@ -20,7 +20,7 @@ var SentimentDetailComponent = (function () {
     SentimentDetailComponent = __decorate([
         core_1.Component({
             selector: 'sentiment-detail',
-            template: "\n        <div class=\"panel\">\n            <h3>{{sentiment.username}}</h3>\n            <p>{{sentiment.status}}</p>\n        </div>\n    "
+            template: "\n        <div class=\"panel\" [class.panel-danger]=\"sentiment.emotion === 0\" [class.panel-default]=\"sentiment.emotion === 2\" [class.panel-success]=\"sentiment.emotion === 4\" >\n            <div class=\"panel-heading\">\n                <p>{{sentiment.username}}</p>\n            </div>\n            <div class=\"panel-body\">\n                <img [src]=\"sentiment.avatarUrl\">\n                <p>{{sentiment.status}}</p>\n                <p>{{sentiment.emotion}}</p>\n            </div>\n        </div>\n    "
         }), 
         __metadata('design:paramtypes', [])
     ], SentimentDetailComponent);

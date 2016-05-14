@@ -35,7 +35,13 @@ var SentimentService = (function () {
             var sentiments = new Array();
             var data = response.json().data;
             for (var i = 0; i < tweets.length; i++) {
-                sentiments.push({ username: tweets[i].user, emotion: data[i].polarity, status: tweets[i].text, avatarUrl: tweets[i].profileImageUrl, date: tweets[i].createdAt });
+                sentiments.push({
+                    username: tweets[i].user,
+                    emotion: data[i].polarity,
+                    status: tweets[i].text,
+                    avatarUrl: tweets[i].profileImageUrl,
+                    date: tweets[i].createdAt
+                });
             }
             return sentiments;
         }); });

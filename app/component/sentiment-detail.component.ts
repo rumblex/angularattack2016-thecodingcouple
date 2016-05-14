@@ -4,9 +4,15 @@ import { Sentiment } from '../model/sentiment';
 @Component({
     selector: 'sentiment-detail',
     template: `
-        <div class="panel">
-            <h3>{{sentiment.username}}</h3>
-            <p>{{sentiment.status}}</p>
+        <div class="panel" [class.panel-danger]="sentiment.emotion === 0" [class.panel-default]="sentiment.emotion === 2" [class.panel-success]="sentiment.emotion === 4" >
+            <div class="panel-heading">
+                <p>{{sentiment.username}}</p>
+            </div>
+            <div class="panel-body">
+                <img [src]="sentiment.avatarUrl">
+                <p>{{sentiment.status}}</p>
+                <p>{{sentiment.emotion}}</p>
+            </div>
         </div>
     `
 })
