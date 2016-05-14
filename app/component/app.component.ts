@@ -23,9 +23,9 @@ import { LandingComponent } from './landing.component';
     <main>
         <landing></landing>
     </main>
-    <hr>
     <footer>
-        <div class="container">
+        <div class="container">        
+            <hr>
             <p>&copy; 2016 The Coding Couple.</p>
         </div>
     </footer>`,
