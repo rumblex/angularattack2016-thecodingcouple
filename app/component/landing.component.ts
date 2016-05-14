@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 
+import {SocialService} from "../service/social.service";
 @Component({
     selector: 'landing',
     template: `
@@ -9,7 +10,7 @@ import { Component } from '@angular/core';
                 <h1>Moody</h1>
                 <p>The emotional polarity of your social networks.</p>
                 <p>
-                    <a class="btn btn-primary btn-lg" role="button">Continue with Twitter</a>
+                    <a class="btn btn-primary btn-lg" role="button" (click)="loginTwitter()">Continue with Twitter</a>
                     <a class="btn btn-primary btn-lg" role="button">Continue with Facebook</a>
                 </p>
             </div>
@@ -17,6 +18,13 @@ import { Component } from '@angular/core';
     </div>
     `
 })
+
 export class LandingComponent {
+     constructor(private social : SocialService){
+        
+     }
     
+     loginTwitter() {
+         this.social.loginTwitter();
+     }
 }
