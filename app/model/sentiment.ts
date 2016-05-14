@@ -1,4 +1,4 @@
-export class Emotion {
+export class Sentiment {
     username: string;
     status: string;
     emotion: string;

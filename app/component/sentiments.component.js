@@ -9,16 +9,16 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var EmotionDetailComponent = (function () {
-    function EmotionDetailComponent() {
+var SentimentsComponent = (function () {
+    function SentimentsComponent() {
     }
-    EmotionDetailComponent = __decorate([
+    SentimentsComponent = __decorate([
         core_1.Component({
-            selector: 'emotion-detail',
+            selector: 'sentiments',
         }), 
         __metadata('design:paramtypes', [])
-    ], EmotionDetailComponent);
-    return EmotionDetailComponent;
+    ], SentimentsComponent);
+    return SentimentsComponent;
 }());
-exports.EmotionDetailComponent = EmotionDetailComponent;
-//# sourceMappingURL=emotion-detail.component.js.map
+exports.SentimentsComponent = SentimentsComponent;
+//# sourceMappingURL=sentiments.component.js.map
