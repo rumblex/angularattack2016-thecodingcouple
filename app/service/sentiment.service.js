@@ -9,17 +9,20 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var ContactComponent = (function () {
-    function ContactComponent() {
+var mock_sentiments_1 = require('../model/mock-sentiments');
+var SentimentService = (function () {
+    function SentimentService() {
     }
-    ContactComponent = __decorate([
-        core_1.Component({
-            selector: 'contact',
-            template: "\n        <div class=\"container\">\n            <h1>Contact Page</h1>\n        </div>\n    "
-        }), 
+    // given a date range, return a collection of emotions
+    // avatar, display name, text analyzed and what it was classified as
+    SentimentService.prototype.getSentiments = function () {
+        return mock_sentiments_1.SENTIMENTS;
+    };
+    SentimentService = __decorate([
+        core_1.Injectable(), 
         __metadata('design:paramtypes', [])
-    ], ContactComponent);
-    return ContactComponent;
+    ], SentimentService);
+    return SentimentService;
 }());
-exports.ContactComponent = ContactComponent;
-//# sourceMappingURL=contact.component.js.map
+exports.SentimentService = SentimentService;
+//# sourceMappingURL=sentiment.service.js.map

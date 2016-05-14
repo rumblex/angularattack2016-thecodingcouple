@@ -15,7 +15,7 @@ var AboutComponent = (function () {
     AboutComponent = __decorate([
         core_1.Component({
             selector: 'about',
-            template: "\n        <h1>About Page</h1>\n    "
+            template: "\n        <div class=\"container\">\n            <h1>About Page</h1>\n        </div>\n    "
         }), 
         __metadata('design:paramtypes', [])
     ], AboutComponent);

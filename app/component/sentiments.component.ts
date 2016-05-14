@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 
 @Component({
-    selector: 'emotions',
+    selector: 'sentiments',
 })
-export class EmotionsComponent {
+export class SentimentsComponent {
     
 }

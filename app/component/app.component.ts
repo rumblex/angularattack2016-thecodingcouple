@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS } from '@angular/router-deprecated';
-import { EmotionService } from '../service/emotion.service';
-import { TwitterService } from '../service/twitter.service';
+
+import { SocialService } from '../service/social.service';
+import { SentimentService } from '../service/sentiment.service';
 import { LandingComponent } from './landing.component';
 import { AboutComponent } from './about.component';
 import { ContactComponent } from './contact.component';
@@ -43,8 +44,8 @@ import { ContactComponent } from './contact.component';
         ],
     providers: [
         ROUTER_PROVIDERS, 
-        EmotionService,
-        TwitterService,
+        SocialService,
+        SentimentService
         ]
 })
 @RouteConfig([
