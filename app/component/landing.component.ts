@@ -7,15 +7,35 @@ import {SocialService} from "../service/social.service";
     template: `
     <div class="jumbotron">
         <div class="container">
-            <div>
-                <h1>Moody</h1>
-                <p>The emotional polarity of your social networks.</p>
-                <p>
-                    <a class="btn btn-primary btn-lg" role="button" (click)="loginTwitter()">Continue with Twitter</a>
-                    <a class="btn btn-primary btn-lg" role="button">Continue with Facebook</a>
-                </p>
-            </div>
+            <h1>Moody</h1>
+            <p>The emotional polarity of your social networks.</p>
+            <p>
+                <a class="btn btn-primary btn-lg" role="button" (click)="loginTwitter()">
+                    <span class="fa fa-twitter" aria-hidden="true"></span> 
+                    Continue with Twitter
+                </a>
+                <a class="btn btn-primary btn-lg" role="button">
+                    <span class="fa fa-facebook" aria-hidden="true"></span> 
+                    Continue with Facebook
+                </a>
+            </p>         
         </div>  
+    </div>
+    <div class="container">
+        <div class="rows">
+            <div class="col-md-4">
+                <h2>Feature 1</h2>
+                <p>Blah blah blah</p>
+            </div>            
+            <div class="col-md-4">
+                <h2>Feature 2</h2>
+                <p>Blah blah blah</p>
+            </div>            
+            <div class="col-md-4">
+                <h2>Feature 3</h2>
+                <p>Blah blah blah</p>
+            </div>
+        </div>
     </div>
     `
 })

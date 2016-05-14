@@ -13,13 +13,13 @@ import { SentimentsComponent } from './sentiments.component';
   selector: 'moody-app',
   template: `
     <header>
-        <nav class="navbar navbar-fixed-top">
+        <nav class="navbar">
             <div class="container">
                 <div class="navbar-header">
-                    <p class="navbar-brand">The Coding Couple | Moody</p>
+                    <p class="navbar-brand"><a [routerLink]="['Home']">The Coding Couple | Moody</a></p>
                 </div>    
                 <div id="navbar">                    
-                    <ul class="nav navbar-nav">
+                    <ul class="nav navbar-nav navbar-right">
                         <li><a [routerLink]="['Home']">Home</a></li>
                         <li><a [routerLink]="['About']">About</a></li>
                         <li><a [routerLink]="['Contact']">Contact</a></li>

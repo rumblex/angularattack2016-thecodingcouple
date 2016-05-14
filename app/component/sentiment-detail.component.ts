@@ -4,13 +4,19 @@ import { Sentiment } from '../model/sentiment';
 @Component({
     selector: 'sentiment-detail',
     template: `
-        <div class="panel" [class.panel-danger]="sentiment.emotion === 0" [class.panel-default]="sentiment.emotion === 2" [class.panel-success]="sentiment.emotion === 4" >
-            <div class="panel-heading">
-                <p>{{sentiment.username}}</p>
-            </div>
-            <div class="panel-body">
-                <img [src]="sentiment.avatarUrl">
-                <p>{{sentiment.status}}</p>
+        <div class="list-group-item" [class.list-group-item-danger]="sentiment.emotion === 0" 
+                                     [class.list-group-item-default]="sentiment.emotion === 2" 
+                                     [class.list-group-item-success]="sentiment.emotion === 4" >
+            <div class="media">
+                <div class="media-left">
+                    <a href="#">
+                        <img [src]="sentiment.avatarUrl">
+                    </a>
+                </div>
+                <div class="media-body">
+                    <h4 class="media-heading">{{sentiment.username}}</h4>
+                    <p>{{sentiment.status}}</p>
+                </div>
             </div>
         </div>
     `
