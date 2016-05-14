@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'my-app',
+  selector: 'moody-app',
   template: `
     <header>
-        <nav class="navbar navbar-fixed-top">
+        <nav class="navbar navbar-inverse navbar-fixed-top">
             <div class="container">
                 <div class="navbar-header">
                     <p>The Coding Couple | Moody</p>
@@ -20,11 +20,18 @@ import { Component } from '@angular/core';
         </nav>
     </header>
     <main>
-        <div class="container">
-            <div>
-                <h1>Moody: The emotional polarity of your social network</h1>
-            </div>
-        </div>  
+        <div class="jumbotron">
+            <div class="container">
+                <div>
+                    <h1>Moody</h1>
+                    <p>The emotional polarity of your social networks.</p>
+                    <p>
+                        <a class="btn btn-primary btn-lg" role="button">Continue with Twitter</a>
+                        <a class="btn btn-primary btn-lg" role="button">Continue with Facebook</a>
+                    </p>
+                </div>
+            </div>  
+        </div>
     </main>
     <footer>
         <div class="container">
