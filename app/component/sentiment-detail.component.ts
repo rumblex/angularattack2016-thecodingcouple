@@ -14,7 +14,7 @@ import { Sentiment } from '../model/sentiment';
                     </a>
                 </div>
                 <div class="media-body">
-                    <h4 class="media-heading"><a [href]="sentiment.profileUrl">{{sentiment.username}}</a></h4>
+                    <h4 class="media-heading"><a target="_blank" [href]="sentiment.profileUrl">{{sentiment.username}}</a></h4>
                     <p>{{sentiment.status}}</p>
                 </div>
             </div>

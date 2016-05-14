@@ -40,7 +40,7 @@ export class SocialService {
                                 profileImageUrl: entry.user.profile_image_url, 
                                 text: entry.text, 
                                 createdAt: new Date(entry.created_at), 
-                                url: entry.url 
+                                url: "http://twitter.com/statuses/" + entry.id_str
                             }) 
                         });
                         resolve(timeline);
