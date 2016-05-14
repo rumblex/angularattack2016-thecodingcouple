@@ -1,9 +1,11 @@
 import { Component } from '@angular/core';
 import { RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS } from '@angular/router-deprecated';
 import { EmotionService } from '../service/emotion.service';
+import { TwitterService } from '../service/twitter.service';
 import { LandingComponent } from './landing.component';
 import { AboutComponent } from './about.component';
 import { ContactComponent } from './contact.component';
+
 
 @Component({
   selector: 'moody-app',
@@ -41,7 +43,8 @@ import { ContactComponent } from './contact.component';
         ],
     providers: [
         ROUTER_PROVIDERS, 
-        EmotionService
+        EmotionService,
+        TwitterService,
         ]
 })
 @RouteConfig([

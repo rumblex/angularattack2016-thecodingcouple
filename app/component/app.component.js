@@ -11,6 +11,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var router_deprecated_1 = require('@angular/router-deprecated');
 var emotion_service_1 = require('../service/emotion.service');
+var twitter_service_1 = require('../service/twitter.service');
 var landing_component_1 = require('./landing.component');
 var about_component_1 = require('./about.component');
 var contact_component_1 = require('./contact.component');
@@ -30,7 +31,8 @@ var AppComponent = (function () {
             ],
             providers: [
                 router_deprecated_1.ROUTER_PROVIDERS,
-                emotion_service_1.EmotionService
+                emotion_service_1.EmotionService,
+                twitter_service_1.TwitterService,
             ]
         }),
         router_deprecated_1.RouteConfig([
