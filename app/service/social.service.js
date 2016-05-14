@@ -14,10 +14,11 @@ var SocialService = (function () {
         OAuth.initialize("6mt4xJ4txgqrt7TGRFnqJLirGYQ");
     }
     SocialService.prototype.loginTwitter = function () {
+        var _this = this;
         return new Promise(function (resolve, reject) {
             return OAuth.popup("twitter")
                 .done(function (result) {
-                this.twitter = result;
+                _this.twitter = result;
                 resolve();
             })
                 .fail(function (err) {
@@ -39,6 +40,7 @@ var SocialService = (function () {
                 response.forEach(function (entry) {
                     timeline.push({ user: entry.user.name, profileImageUrl: entry.user.profile_image_url, text: entry.text, createdAt: new Date(entry.created_at) });
                 });
+                resolve(timeline);
             })
                 .fail(function (error) {
                 reject(error);

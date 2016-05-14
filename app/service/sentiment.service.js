@@ -23,12 +23,17 @@ var SentimentService = (function () {
     }
     SentimentService.prototype.getSentiments = function () {
         var _this = this;
-        return this.social.getLatestTweets(0)
-            .then(function (tweets) { return _this.http.post("http://sentiment140.com/api/bulkClassifyJson?appid=ashley.grenon@gmail.com", JSON.stringify({
+        var body = JSON.stringify({
             data: tweets.map(function (t) {
                 return { text: t.text };
             })
-        })).toPromise()
+        });
+        var headers = new http_1.Headers({
+            'Access-Control-Allow-Origin': '*'
+        });
+        var url = "http://sentiment140.com/api/bulkClassifyJson?appid=ashley.grenon@gmail.com";
+        return this.social.getLatestTweets(0)
+            .then(function (tweets) { return _this.http.post(url, body, headers).toPromise()
             .then(function (response) {
             var sentiments = new Array();
             var data = response.json().data;

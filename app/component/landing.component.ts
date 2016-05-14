@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router-deprecated';
 
 import {SocialService} from "../service/social.service";
 @Component({
@@ -20,11 +21,21 @@ import {SocialService} from "../service/social.service";
 })
 
 export class LandingComponent {
-     constructor(private social : SocialService){
+     constructor(private social: SocialService, private router: Router){
         
      }
     
      loginTwitter() {
-         this.social.loginTwitter();
+         this.social.loginTwitter()
+                    .then(() => this.goToSentiments(), this.errorHandler);
+     }
+     
+     goToSentiments() {
+         let link = ['Sentiments'];
+         this.router.navigate(link);
+     }
+     
+     errorHandler(err) {
+         console.log(err);
      }
 }

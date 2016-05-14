@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
 import { RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS } from '@angular/router-deprecated';
-
+import { HTTP_PROVIDERS } from '@angular/http';
 import { SocialService } from '../service/social.service';
 import { SentimentService } from '../service/sentiment.service';
 import { LandingComponent } from './landing.component';
 import { AboutComponent } from './about.component';
 import { ContactComponent } from './contact.component';
+import { SentimentsComponent } from './sentiments.component';
 
 
 @Component({
@@ -40,10 +41,12 @@ import { ContactComponent } from './contact.component';
         ROUTER_DIRECTIVES,
         LandingComponent,
         AboutComponent,
-        ContactComponent
+        ContactComponent,
+        SentimentsComponent
         ],
     providers: [
         ROUTER_PROVIDERS, 
+        HTTP_PROVIDERS
         SocialService,
         SentimentService
         ]
@@ -63,6 +66,11 @@ import { ContactComponent } from './contact.component';
         path: '/contact',
         name: 'Contact',
         component: ContactComponent
+    },
+    {
+        path: '/sentiments',
+        name: 'Sentiments',
+        component: SentimentsComponent
     }
 ])
 export class AppComponent {

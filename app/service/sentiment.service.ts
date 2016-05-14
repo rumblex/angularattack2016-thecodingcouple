@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { SENTIMENTS } from '../model/mock-sentiments';
 import { SocialService } from './social.service';
-import { Http, Response } from '@angular/http';
+import { Http, Response, Headers } from '@angular/http';
 import { Sentiment } from '../model/sentiment';
 
 @Injectable()
@@ -18,13 +18,19 @@ export class SentimentService {
     }
     
     getSentiments() {
-        return this.social.getLatestTweets(0)
-                          .then(tweets => this.http.post("http://sentiment140.com/api/bulkClassifyJson?appid=ashley.grenon@gmail.com", JSON.stringify({
+        let body = JSON.stringify({
                                 data: tweets.map(function(t){
                                     return {text: t.text};
                                 })
-                            })).toPromise()
-                            .then(response => {
+                            });
+        let headers = new Headers({ 
+            'Access-Control-Allow-Origin': '*' 
+        });
+        let url = "http://sentiment140.com/api/bulkClassifyJson?appid=ashley.grenon@gmail.com";
+        
+        return this.social.getLatestTweets(0)
+                          .then(tweets => this.http.post(url, body, headers).toPromise()
+                          .then(response => {
                                 let sentiments : Sentiment[] = new Array();
                                 let data = response.json().data;
                                 for (let i = 0; i < tweets.length; i++) {
@@ -32,7 +38,7 @@ export class SentimentService {
                                 }
                                 
                                 return sentiments;
-                            }));
+                          }));
                             
     }
 }

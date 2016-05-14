@@ -15,7 +15,7 @@ var SentimentsComponent = (function () {
     function SentimentsComponent(sentimentService) {
         this.sentimentService = sentimentService;
     }
-    SentimentsComponent.prototype.ngOnInit = function () {
+    SentimentsComponent.prototype.routerOnActivate = function () {
         var _this = this;
         this.sentimentService.getSentiments()
             .then(function (sentiments) { return _this.sentiments = sentiments; });
@@ -23,7 +23,7 @@ var SentimentsComponent = (function () {
     SentimentsComponent = __decorate([
         core_1.Component({
             selector: 'sentiments',
-            template: "\n        <div class=\"container\">\n            <h1>Sentiments</h1>\n            <sentiment-detail *ngFor=\"let sentiment in sentiments\" [sentiment]=\"sentiment\"></sentiment-detail>\n        </div>\n    ",
+            template: "\n        <div class=\"container\">\n            <h1>Sentiments</h1>\n            <sentiment-detail *ngFor=\"let sentiment of sentiments\" [sentiment]=\"sentiment\"></sentiment-detail>\n        </div>\n    ",
             providers: [sentiment_detail_component_1.SentimentDetailComponent]
         }), 
         __metadata('design:paramtypes', [sentiment_service_1.SentimentService])

@@ -14,13 +14,13 @@ export class SocialService {
     loginTwitter()  {
         return new Promise((resolve, reject) => 
             OAuth.popup("twitter")
-            .done(function(result) {
-                this.twitter = result;
-                resolve();
-            })
-            .fail(function(err) {
-                reject(err);
-            }));
+                .done(result => {
+                    this.twitter = result;
+                    resolve();
+                })
+                .fail(err => {
+                    reject(err);
+                }));
     }
     
     getLatestTweets(cursor) : Promise<Tweet[]> {
@@ -32,14 +32,15 @@ export class SocialService {
        
        return new Promise((resolve, reject) => 
         this.twitter.get(url)
-        .done(function(response) {
-            let timeline:Tweet[] = new Array();
-            response.forEach(function(entry){
-               timeline.push({user: entry.user.name, profileImageUrl: entry.user.profile_image_url, text: entry.text, createdAt: new Date(entry.created_at) }) 
-            });
-        })
-        .fail(function(error){
-            reject(error);
-        }));
+                    .done(response => {
+                        let timeline:Tweet[] = new Array();
+                        response.forEach(entry => {
+                            timeline.push({user: entry.user.name, profileImageUrl: entry.user.profile_image_url, text: entry.text, createdAt: new Date(entry.created_at) }) 
+                        });
+                        resolve(timeline);
+                    })
+                    .fail(error => {
+                        reject(error);
+                    }));
     }   
 }
