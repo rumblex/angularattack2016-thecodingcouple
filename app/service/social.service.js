@@ -14,42 +14,47 @@ var SocialService = (function () {
         OAuth.initialize("6mt4xJ4txgqrt7TGRFnqJLirGYQ");
     }
     SocialService.prototype.loginTwitter = function () {
-        var _this = this;
         return new Promise(function (resolve, reject) {
-            return OAuth.popup("twitter")
-                .done(function (result) {
-                _this.twitter = result;
-                resolve();
-            })
-                .fail(function (err) {
-                reject(err);
-            });
+            var twitter = OAuth.create('twitter');
+            if (!twitter) {
+                OAuth.popup("twitter", { cache: true })
+                    .done(function (result) {
+                    resolve(result);
+                })
+                    .fail(function (err) {
+                    reject(err);
+                });
+            }
+            else {
+                resolve(twitter);
+            }
         });
     };
     SocialService.prototype.getLatestTweets = function (cursor) {
-        var _this = this;
-        var url = '/1.1/statuses/home_timeline.json';
-        url += "?count=200";
-        if (cursor) {
-            url += '&max_id=' + cursor;
-        }
-        return new Promise(function (resolve, reject) {
-            return _this.twitter.get(url)
-                .done(function (response) {
-                var timeline = new Array();
-                response.forEach(function (entry) {
-                    timeline.push({
-                        user: entry.user.name,
-                        profileImageUrl: entry.user.profile_image_url,
-                        text: entry.text,
-                        createdAt: new Date(entry.created_at),
-                        url: "http://twitter.com/statuses/" + entry.id_str
+        return this.loginTwitter().then(function (twitter) {
+            var url = '/1.1/statuses/home_timeline.json';
+            url += "?count=200";
+            if (cursor) {
+                url += '&max_id=' + cursor;
+            }
+            return new Promise(function (resolve, reject) {
+                return twitter.get(url)
+                    .done(function (response) {
+                    var timeline = new Array();
+                    response.forEach(function (entry) {
+                        timeline.push({
+                            user: entry.user.name,
+                            profileImageUrl: entry.user.profile_image_url,
+                            text: entry.text,
+                            createdAt: new Date(entry.created_at),
+                            url: "http://twitter.com/statuses/" + entry.id_str
+                        });
                     });
+                    resolve(timeline);
+                })
+                    .fail(function (error) {
+                    reject(error);
                 });
-                resolve(timeline);
-            })
-                .fail(function (error) {
-                reject(error);
             });
         });
     };

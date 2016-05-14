@@ -5,33 +5,38 @@ declare var OAuth:any;
 
 @Injectable()
 export class SocialService {
-    twitter: any;
        
     constructor() {
         OAuth.initialize("6mt4xJ4txgqrt7TGRFnqJLirGYQ");
     }
         
-    loginTwitter()  {
-        return new Promise((resolve, reject) => 
-            OAuth.popup("twitter")
-                .done(result => {
-                    this.twitter = result;
-                    resolve();
-                })
-                .fail(err => {
-                    reject(err);
-                }));
+    loginTwitter() : Promise<any>  {
+        return new Promise((resolve, reject) => {
+            let twitter = OAuth.create('twitter');
+            if (!twitter) {
+                OAuth.popup("twitter", {cache: true})
+                    .done(result => {
+                        resolve(result);
+                    })
+                    .fail(err => {
+                        reject(err);
+                    });
+            } else {
+                resolve(twitter);
+            }
+        });
     }
     
     getLatestTweets(cursor) : Promise<Tweet[]> {
-       let url = '/1.1/statuses/home_timeline.json';
-       url += "?count=200";
-       if (cursor) {
-           url += '&max_id=' + cursor;
-       }
-       
-       return new Promise((resolve, reject) => 
-        this.twitter.get(url)
+       return this.loginTwitter().then(twitter => {
+            let url = '/1.1/statuses/home_timeline.json';
+            url += "?count=200";
+            if (cursor) {
+                url += '&max_id=' + cursor;
+            }
+            
+            return new Promise<Tweet[]>((resolve, reject) =>
+                twitter.get(url)
                     .done(response => {
                         let timeline:Tweet[] = new Array();
                         response.forEach(entry => {
@@ -47,6 +52,8 @@ export class SocialService {
                     })
                     .fail(error => {
                         reject(error);
-                    }));
+                    })
+            );
+       });
     }   
 }
