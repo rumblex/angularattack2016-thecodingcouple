@@ -11,7 +11,6 @@ import { Sentiment } from '../model/sentiment';
             <div class="panel-body">
                 <img [src]="sentiment.avatarUrl">
                 <p>{{sentiment.status}}</p>
-                <p>{{sentiment.emotion}}</p>
             </div>
         </div>
     `
