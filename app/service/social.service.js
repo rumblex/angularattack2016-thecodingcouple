@@ -25,6 +25,26 @@ var SocialService = (function () {
             });
         });
     };
+    SocialService.prototype.getLatestTweets = function (cursor) {
+        var _this = this;
+        var url = '/1.1/statuses/home_timeline.json';
+        url += "?count=200";
+        if (cursor) {
+            url += '&max_id=' + cursor;
+        }
+        return new Promise(function (resolve, reject) {
+            return _this.twitter.get(url)
+                .done(function (response) {
+                var timeline = new Array();
+                response.forEach(function (entry) {
+                    timeline.push({ user: entry.user.name, profileImageUrl: entry.user.profile_image_url, text: entry.text, createdAt: new Date(entry.created_at) });
+                });
+            })
+                .fail(function (error) {
+                reject(error);
+            });
+        });
+    };
     SocialService = __decorate([
         core_1.Injectable(), 
         __metadata('design:paramtypes', [])
