@@ -15,7 +15,7 @@ var AppComponent = (function () {
     AppComponent = __decorate([
         core_1.Component({
             selector: 'my-app',
-            template: "\n    <header>\n        <p>The Coding Couple | Moody</p>\n        <nav>\n            <ul>\n                <li>Home</li>\n                <li>About</li>\n                <li>Contact</li>\n            </ul>\n        </nav>\n    </header>\n    <main>  \n        <h1>Moody: The emotional polarity of your social network</h1>\n    </main>\n    <footer>\n        <small>&copy; 2016 The Coding Couple.</small>\n    </footer>"
+            template: "\n    <header>\n        <nav class=\"navbar navbar-fixed-top\">\n            <div class=\"container\">\n                <div class=\"navbar-header\">\n                    <p>The Coding Couple | Moody</p>\n                </div>    \n                <div id=\"navbar\" class=\"collapse navbar-collapse\">                    \n                    <ul class=\"nav navbar-nav\">\n                        <li>Home</li>\n                        <li>About</li>\n                        <li>Contact</li>\n                    </ul>   \n                </div>         \n            </div>\n        </nav>\n    </header>\n    <main>\n        <div class=\"container\">\n            <div>\n                <h1>Moody: The emotional polarity of your social network</h1>\n            </div>\n        </div>  \n    </main>\n    <footer>\n        <div class=\"container\">\n            <small>&copy; 2016 The Coding Couple.</small>\n        </div>\n    </footer>"
         }), 
         __metadata('design:paramtypes', [])
     ], AppComponent);
