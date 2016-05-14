@@ -7,8 +7,8 @@ import {SocialService} from "../service/social.service";
     template: `
     <div class="jumbotron">
         <div class="container">
-            <h1>Moody</h1>
-            <p>The emotional polarity of your social networks.</p>
+            <h1>MOODY</h1>
+            <p>The emotional polarity of your social network.</p>
             <p>
                 <a class="btn btn-primary btn-lg" role="button" (click)="loginTwitter()">
                     <span class="fa fa-twitter" aria-hidden="true"></span> 

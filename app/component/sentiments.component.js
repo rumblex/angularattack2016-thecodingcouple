@@ -23,7 +23,7 @@ var SentimentsComponent = (function () {
     SentimentsComponent = __decorate([
         core_1.Component({
             selector: 'sentiments',
-            template: "\n        <div class=\"container\">\n            <h1>Sentiments</h1>\n            <span class=\"fa fa-spinner fa-spin fa-3x fa-fw\" *ngIf=\"!sentiments\"></span>\n            <sentiment-detail *ngFor=\"let sentiment of sentiments\" [sentiment]=\"sentiment\"></sentiment-detail>\n        </div>\n    ",
+            template: "\n        <div class=\"container\">\n            <h1>Sentiments</h1>\n            <span class=\"fa fa-spinner fa-pulse fa-3x fa-fw\" *ngIf=\"!sentiments\"></span>\n            <sentiment-detail *ngFor=\"let sentiment of sentiments\" [sentiment]=\"sentiment\"></sentiment-detail>\n        </div>\n    ",
             directives: [sentiment_detail_component_1.SentimentDetailComponent]
         }), 
         __metadata('design:paramtypes', [sentiment_service_1.SentimentService])

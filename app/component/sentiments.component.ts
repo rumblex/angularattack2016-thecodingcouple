@@ -10,7 +10,7 @@ import { SentimentService } from '../service/sentiment.service';
     template: `
         <div class="container">
             <h1>Sentiments</h1>
-            <span class="fa fa-spinner fa-spin fa-3x fa-fw" *ngIf="!sentiments"></span>
+            <span class="fa fa-spinner fa-pulse fa-3x fa-fw" *ngIf="!sentiments"></span>
             <sentiment-detail *ngFor="let sentiment of sentiments" [sentiment]="sentiment"></sentiment-detail>
         </div>
     `,
