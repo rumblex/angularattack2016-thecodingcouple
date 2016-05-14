@@ -4,8 +4,8 @@ import { Sentiment } from '../model/sentiment';
 @Component({
     selector: 'sentiment-detail',
     template: `
-        <div>
-            <h1>{{sentiment.username}}</h1>
+        <div class="panel">
+            <h3>{{sentiment.username}}</h3>
             <p>{{sentiment.status}}</p>
         </div>
     `

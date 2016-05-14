@@ -16,15 +16,20 @@ var SentimentsComponent = (function () {
         this.sentimentService = sentimentService;
     }
     SentimentsComponent.prototype.routerOnActivate = function () {
-        var _this = this;
-        return this.sentimentService.getSentiments()
-            .then(function (sentiments) { return _this.sentiments = sentiments; });
+        this.sentiments = [
+            { "username": "Ashley Joe", "status": "I love life", "emotion": "positive", "avatarUrl": "", "date": new Date() },
+            { "username": "Jame Michael", "status": "I hate life", "emotion": "negative", "avatarUrl": "", "date": new Date() },
+            { "username": "Hoe Joe", "status": "I am okay with life", "emotion": "neutral", "avatarUrl": "", "date": new Date() }
+        ];
+        return Promise.resolve(this.sentiments);
+        // return this.sentimentService.getSentiments()
+        //                             .then(sentiments => this.sentiments = sentiments);
     };
     SentimentsComponent = __decorate([
         core_1.Component({
             selector: 'sentiments',
             template: "\n        <div class=\"container\">\n            <h1>Sentiments</h1>\n            <sentiment-detail *ngFor=\"let sentiment of sentiments\" [sentiment]=\"sentiment\"></sentiment-detail>\n        </div>\n    ",
-            providers: [sentiment_detail_component_1.SentimentDetailComponent]
+            directives: [sentiment_detail_component_1.SentimentDetailComponent]
         }), 
         __metadata('design:paramtypes', [sentiment_service_1.SentimentService])
     ], SentimentsComponent);

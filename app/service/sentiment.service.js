@@ -9,39 +9,16 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
+var mock_sentiments_1 = require('../model/mock-sentiments');
 var social_service_1 = require('./social.service');
 var http_1 = require('@angular/http');
 var SentimentService = (function () {
-    // given a date range, return a collection of emotions
-    // avatar, display name, text analyzed and what it was classified as
-    //  getSentiments() {
-    //      return Promise.resolve(SENTIMENTS);
-    //  }
     function SentimentService(social, http) {
         this.social = social;
         this.http = http;
     }
     SentimentService.prototype.getSentiments = function () {
-        var _this = this;
-        var body = JSON.stringify({
-            data: tweets.map(function (t) {
-                return { text: t.text };
-            })
-        });
-        var headers = new http_1.Headers({
-            'Access-Control-Allow-Origin': '*'
-        });
-        var url = "http://sentiment140.com/api/bulkClassifyJson?appid=ashley.grenon@gmail.com";
-        return this.social.getLatestTweets(0)
-            .then(function (tweets) { return _this.http.post(url, body, headers).toPromise()
-            .then(function (response) {
-            var sentiments = new Array();
-            var data = response.json().data;
-            for (var i = 0; i < tweets.length; i++) {
-                sentiments.push({ username: tweets[i].user, emotion: data[i].polarity, status: tweets[i].text, avatarUrl: tweets[i].profileImageUrl, date: tweets[i].createdAt });
-            }
-            return sentiments;
-        }); });
+        return Promise.resolve(mock_sentiments_1.SENTIMENTS);
     };
     SentimentService = __decorate([
         core_1.Injectable(), 
