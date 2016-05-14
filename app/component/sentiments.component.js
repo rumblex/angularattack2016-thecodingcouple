@@ -17,7 +17,7 @@ var SentimentsComponent = (function () {
     }
     SentimentsComponent.prototype.routerOnActivate = function () {
         var _this = this;
-        this.sentimentService.getSentiments()
+        return this.sentimentService.getSentiments()
             .then(function (sentiments) { return _this.sentiments = sentiments; });
     };
     SentimentsComponent = __decorate([

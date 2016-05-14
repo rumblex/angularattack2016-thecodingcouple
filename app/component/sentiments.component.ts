@@ -1,4 +1,5 @@
-import { Component, OnActivate } from '@angular/core';
+import { Component } from '@angular/core';
+import { OnActivate } from '@angular/router';
 import { Sentiment } from '../model/sentiment';
 import { SentimentDetailComponent } from './sentiment-detail.component';
 import { SentimentService } from '../service/sentiment.service';
@@ -21,7 +22,7 @@ export class SentimentsComponent implements OnActivate {
     }
     
     routerOnActivate() {
-        this.sentimentService.getSentiments()
-                             .then(sentiments => this.sentiments = sentiments);
+        return this.sentimentService.getSentiments()
+                                    .then(sentiments => this.sentiments = sentiments);
     }
 }

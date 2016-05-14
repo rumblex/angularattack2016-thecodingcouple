@@ -46,7 +46,7 @@ import { SentimentsComponent } from './sentiments.component';
         ],
     providers: [
         ROUTER_PROVIDERS, 
-        HTTP_PROVIDERS
+        HTTP_PROVIDERS,
         SocialService,
         SentimentService
         ]
