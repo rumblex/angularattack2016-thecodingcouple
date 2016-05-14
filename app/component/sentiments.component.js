@@ -9,14 +9,24 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
+var sentiment_detail_component_1 = require('./sentiment-detail.component');
+var sentiment_service_1 = require('../service/sentiment.service');
 var SentimentsComponent = (function () {
-    function SentimentsComponent() {
+    function SentimentsComponent(sentimentService) {
+        this.sentimentService = sentimentService;
     }
+    SentimentsComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.sentimentService.getSentiments()
+            .then(function (sentiments) { return _this.sentiments = sentiments; });
+    };
     SentimentsComponent = __decorate([
         core_1.Component({
             selector: 'sentiments',
+            template: "\n        <div class=\"container\">\n            <h1>Sentiments</h1>\n            <sentiment-detail *ngFor=\"let sentiment in sentiments\" [sentiment]=\"sentiment\"></sentiment-detail>\n        </div>\n    ",
+            providers: [sentiment_detail_component_1.SentimentDetailComponent]
         }), 
-        __metadata('design:paramtypes', [])
+        __metadata('design:paramtypes', [sentiment_service_1.SentimentService])
     ], SentimentsComponent);
     return SentimentsComponent;
 }());

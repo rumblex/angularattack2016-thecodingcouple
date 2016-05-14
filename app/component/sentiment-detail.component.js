@@ -9,12 +9,18 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
+var sentiment_1 = require('../model/sentiment');
 var SentimentDetailComponent = (function () {
     function SentimentDetailComponent() {
     }
+    __decorate([
+        core_1.Input(), 
+        __metadata('design:type', sentiment_1.Sentiment)
+    ], SentimentDetailComponent.prototype, "sentiment", void 0);
     SentimentDetailComponent = __decorate([
         core_1.Component({
             selector: 'sentiment-detail',
+            template: "\n        <div>\n            <h1>{{sentiment.username}}</h1>\n            <p>{{sentiment.status}}</p>\n        </div>\n    "
         }), 
         __metadata('design:paramtypes', [])
     ], SentimentDetailComponent);

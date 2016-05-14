@@ -7,6 +7,6 @@ export class SentimentService {
      // avatar, display name, text analyzed and what it was classified as
      
      getSentiments() {
-         return SENTIMENTS;
+         return Promise.resolve(SENTIMENTS);
      }
 }
