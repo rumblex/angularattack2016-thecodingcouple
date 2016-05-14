@@ -33,6 +33,6 @@ app.post('/sentiment140/bulkClassifyJson', function(req, res) {
     httpRequest.end();
 });
 
-app.listen(7020, function() {
+app.listen(process.env.PORT || 7020, function() {
     console.log("cors_forwarder listening on port 7020");
 });
