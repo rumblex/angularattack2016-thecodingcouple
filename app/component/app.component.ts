@@ -17,7 +17,7 @@ import { ContactComponent } from './contact.component';
                 <div class="navbar-header">
                     <p class="navbar-brand">The Coding Couple | Moody</p>
                 </div>    
-                <div id="navbar" class="navbar-collapse collapse">                    
+                <div id="navbar">                    
                     <ul class="nav navbar-nav">
                         <li><a [routerLink]="['Home']">Home</a></li>
                         <li><a [routerLink]="['About']">About</a></li>
