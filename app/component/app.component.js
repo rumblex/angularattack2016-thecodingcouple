@@ -9,13 +9,15 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
+var landing_component_1 = require('./landing.component');
 var AppComponent = (function () {
     function AppComponent() {
     }
     AppComponent = __decorate([
         core_1.Component({
             selector: 'moody-app',
-            template: "\n    <header>\n        <nav class=\"navbar navbar-inverse navbar-fixed-top\">\n            <div class=\"container\">\n                <div class=\"navbar-header\">\n                    <p>The Coding Couple | Moody</p>\n                </div>    \n                <div id=\"navbar\" class=\"collapse navbar-collapse\">                    \n                    <ul class=\"nav navbar-nav\">\n                        <li>Home</li>\n                        <li>About</li>\n                        <li>Contact</li>\n                    </ul>   \n                </div>         \n            </div>\n        </nav>\n    </header>\n    <main>\n        <div class=\"jumbotron\">\n            <div class=\"container\">\n                <div>\n                    <h1>Moody</h1>\n                    <p>The emotional polarity of your social networks.</p>\n                    <p>\n                        <a class=\"btn btn-primary btn-lg\" role=\"button\">Continue with Twitter</a>\n                        <a class=\"btn btn-primary btn-lg\" role=\"button\">Continue with Facebook</a>\n                    </p>\n                </div>\n            </div>  \n        </div>\n    </main>\n    <footer>\n        <div class=\"container\">\n            <small>&copy; 2016 The Coding Couple.</small>\n        </div>\n    </footer>"
+            template: "\n    <header>\n        <nav class=\"navbar navbar-fixed-top\">\n            <div class=\"container\">\n                <div class=\"navbar-header\">\n                    <p class=\"navbar-brand\">The Coding Couple | Moody</p>\n                </div>    \n                <div id=\"navbar\" class=\"navbar-collapse collapse\">                    \n                    <ul class=\"nav navbar-nav\">\n                        <li>Home</li>\n                        <li>About</li>\n                        <li>Contact</li>\n                    </ul>   \n                </div>         \n            </div>\n        </nav>\n    </header>\n    <main>\n        <landing></landing>\n    </main>\n    <hr>\n    <footer>\n        <div class=\"container\">\n            <p>&copy; 2016 The Coding Couple.</p>\n        </div>\n    </footer>",
+            directives: [landing_component_1.LandingComponent]
         }), 
         __metadata('design:paramtypes', [])
     ], AppComponent);
