@@ -9,9 +9,15 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
+var mock_emotions_1 = require('../model/mock-emotions');
 var EmotionService = (function () {
     function EmotionService() {
     }
+    // given a date range, return a collection of emotions
+    // avatar, display name, text analyzed and what it was classified as
+    EmotionService.prototype.getEmotions = function () {
+        return mock_emotions_1.EMOTIONS;
+    };
     EmotionService = __decorate([
         core_1.Injectable(), 
         __metadata('design:paramtypes', [])
