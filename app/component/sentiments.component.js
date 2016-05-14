@@ -16,14 +16,9 @@ var SentimentsComponent = (function () {
         this.sentimentService = sentimentService;
     }
     SentimentsComponent.prototype.routerOnActivate = function () {
-        this.sentiments = [
-            { "username": "Ashley Joe", "status": "I love life", "emotion": "positive", "avatarUrl": "", "date": new Date() },
-            { "username": "Jame Michael", "status": "I hate life", "emotion": "negative", "avatarUrl": "", "date": new Date() },
-            { "username": "Hoe Joe", "status": "I am okay with life", "emotion": "neutral", "avatarUrl": "", "date": new Date() }
-        ];
-        return Promise.resolve(this.sentiments);
-        // return this.sentimentService.getSentiments()
-        //                             .then(sentiments => this.sentiments = sentiments);
+        var _this = this;
+        return this.sentimentService.getSentiments()
+            .then(function (sentiments) { return _this.sentiments = sentiments; });
     };
     SentimentsComponent = __decorate([
         core_1.Component({
