@@ -18,7 +18,7 @@ export class SentimentService {
         let headers = new Headers({ 
             'Content-Type': 'application/json' 
         });
-        let url = "http://localhost:7020/sentiment140/bulkClassifyJson";
+        let url = "http://angularattack2016-moody.herokuapp.com/sentiment140/bulkClassifyJson";
         
         return this.social.getLatestTweets(0)
                           .then(tweets => this.http.post(url, JSON.stringify({

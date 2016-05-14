@@ -24,7 +24,7 @@ var SentimentService = (function () {
         var headers = new http_1.Headers({
             'Content-Type': 'application/json'
         });
-        var url = "http://localhost:7020/sentiment140/bulkClassifyJson";
+        var url = "http://angularattack2016-moody.herokuapp.com/sentiment140/bulkClassifyJson";
         return this.social.getLatestTweets(0)
             .then(function (tweets) { return _this.http.post(url, JSON.stringify({
             data: tweets.map(function (t) {
