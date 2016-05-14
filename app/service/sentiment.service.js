@@ -16,7 +16,7 @@ var SentimentService = (function () {
     // given a date range, return a collection of emotions
     // avatar, display name, text analyzed and what it was classified as
     SentimentService.prototype.getSentiments = function () {
-        return mock_sentiments_1.SENTIMENTS;
+        return Promise.resolve(mock_sentiments_1.SENTIMENTS);
     };
     SentimentService = __decorate([
         core_1.Injectable(), 

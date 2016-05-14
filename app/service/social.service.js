@@ -11,16 +11,18 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var SocialService = (function () {
     function SocialService() {
-        //
         OAuth.initialize("6mt4xJ4txgqrt7TGRFnqJLirGYQ");
     }
-    SocialService.prototype.login = function () {
-        OAuth.popup("twitter")
-            .done(function (result) {
-            console.log("Done: " + result);
-        })
-            .fail(function (err) {
-            console.log(err);
+    SocialService.prototype.loginTwitter = function () {
+        return new Promise(function (resolve, reject) {
+            return OAuth.popup("twitter")
+                .done(function (result) {
+                this.twitter = result;
+                resolve();
+            })
+                .fail(function (err) {
+                reject(err);
+            });
         });
     };
     SocialService = __decorate([
