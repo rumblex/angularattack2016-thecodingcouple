@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { SENTIMENTS } from '../model/mock-sentiments';
 import { SocialService } from './social.service';
 import { Http, Response, Headers, RequestOptions } from '@angular/http';
 import { Sentiment } from '../model/sentiment';
@@ -33,10 +32,11 @@ export class SentimentService {
                                 for (let i = 0; i < tweets.length; i++) {
                                     sentiments.push({
                                         username: tweets[i].user, 
-                                        emotion: data[i].polarity, 
+                                        polarity: data[i].polarity, 
                                         status: tweets[i].text, 
                                         avatarUrl: tweets[i].profileImageUrl, 
-                                        date: tweets[i].createdAt
+                                        date: tweets[i].createdAt,
+                                        profileUrl: tweets[i].url
                                     });
                                 }
                                 

@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { OnActivate } from '@angular/router';
 import { Sentiment } from '../model/sentiment';
-import { SENTIMENTS } from '../model/mock-sentiments';
 import { SentimentDetailComponent } from './sentiment-detail.component';
 import { SentimentService } from '../service/sentiment.service';
 

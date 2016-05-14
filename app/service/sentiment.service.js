@@ -37,10 +37,11 @@ var SentimentService = (function () {
             for (var i = 0; i < tweets.length; i++) {
                 sentiments.push({
                     username: tweets[i].user,
-                    emotion: data[i].polarity,
+                    polarity: data[i].polarity,
                     status: tweets[i].text,
                     avatarUrl: tweets[i].profileImageUrl,
-                    date: tweets[i].createdAt
+                    date: tweets[i].createdAt,
+                    profileUrl: tweets[i].url
                 });
             }
             return sentiments;

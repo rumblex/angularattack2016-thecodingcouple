@@ -3,4 +3,5 @@ export class Tweet {
     profileImageUrl:string;
     text:string;
     createdAt:Date;
+    url: string;
 }

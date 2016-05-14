@@ -35,7 +35,13 @@ export class SocialService {
                     .done(response => {
                         let timeline:Tweet[] = new Array();
                         response.forEach(entry => {
-                            timeline.push({user: entry.user.name, profileImageUrl: entry.user.profile_image_url, text: entry.text, createdAt: new Date(entry.created_at) }) 
+                            timeline.push({
+                                user: entry.user.name, 
+                                profileImageUrl: entry.user.profile_image_url, 
+                                text: entry.text, 
+                                createdAt: new Date(entry.created_at), 
+                                url: entry.url 
+                            }) 
                         });
                         resolve(timeline);
                     })

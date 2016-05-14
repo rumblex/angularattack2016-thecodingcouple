@@ -4,9 +4,9 @@ import { Sentiment } from '../model/sentiment';
 @Component({
     selector: 'sentiment-detail',
     template: `
-        <div class="list-group-item" [class.list-group-item-danger]="sentiment.emotion === 0" 
-                                     [class.list-group-item-default]="sentiment.emotion === 2" 
-                                     [class.list-group-item-success]="sentiment.emotion === 4" >
+        <div class="list-group-item" [class.list-group-item-danger]="sentiment.polarity === 0" 
+                                     [class.list-group-item-default]="sentiment.polarity === 2" 
+                                     [class.list-group-item-success]="sentiment.polarity === 4" >
             <div class="media">
                 <div class="media-left">
                     <a href="#">
@@ -14,7 +14,7 @@ import { Sentiment } from '../model/sentiment';
                     </a>
                 </div>
                 <div class="media-body">
-                    <h4 class="media-heading">{{sentiment.username}}</h4>
+                    <h4 class="media-heading"><a [href]="sentiment.profileUrl">{{sentiment.username}}</a></h4>
                     <p>{{sentiment.status}}</p>
                 </div>
             </div>

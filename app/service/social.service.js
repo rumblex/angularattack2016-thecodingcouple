@@ -38,7 +38,13 @@ var SocialService = (function () {
                 .done(function (response) {
                 var timeline = new Array();
                 response.forEach(function (entry) {
-                    timeline.push({ user: entry.user.name, profileImageUrl: entry.user.profile_image_url, text: entry.text, createdAt: new Date(entry.created_at) });
+                    timeline.push({
+                        user: entry.user.name,
+                        profileImageUrl: entry.user.profile_image_url,
+                        text: entry.text,
+                        createdAt: new Date(entry.created_at),
+                        url: entry.url
+                    });
                 });
                 resolve(timeline);
             })
