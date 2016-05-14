@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import {TwitterService} from "../service/twitter.service";
+import {SocialService} from "../service/social.service";
 @Component({
     selector: 'landing',
     template: `
@@ -20,11 +20,11 @@ import {TwitterService} from "../service/twitter.service";
 })
 
 export class LandingComponent {
-     constructor(private twitter : TwitterService){
+     constructor(private social : SocialService){
         
      }
     
      loginTwitter() {
-         this.twitter.login();
+         this.social.loginTwitter();
      }
 }
