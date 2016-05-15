@@ -8,7 +8,6 @@
     '@angular':                   'node_modules/@angular',
     'moment':                     'node_modules/moment/moment.js',
     'ng2-bootstrap':              'node_modules/ng2-bootstrap',
-    'chart':                      'node_modules/chart.js/'
   };
 
   // packages tells the System loader how to load when no filename and/or no extension
@@ -18,7 +17,6 @@
     'angular2-in-memory-web-api': { defaultExtension: 'js' },
     'ng2-bootstrap':              { defaultExtension: 'js' },
     'moment':                     { type: 'cjs', defaultExtension: 'js' },
-    'chart':                      { defaultExtension: 'js' }
   };
 
   var packageNames = [

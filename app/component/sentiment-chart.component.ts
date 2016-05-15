@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Sentiment } from '../model/sentiment';
-import Chart from 'chart/Chart';
+
+declare var Chart:any;
 
 @Component({
     selector: 'sentiment-chart',
