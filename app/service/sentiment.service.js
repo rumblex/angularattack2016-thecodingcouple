@@ -15,22 +15,43 @@ var SentimentService = (function () {
     function SentimentService(social, http) {
         this.social = social;
         this.http = http;
-    }
-    // getSentiments() {
-    //      return Promise.resolve(SENTIMENTS);
-    //  }
-    SentimentService.prototype.getSentiments = function () {
-        var _this = this;
-        var headers = new http_1.Headers({
+        this.url = "http://angularattack2016-moody.herokuapp.com/sentiment140/bulkClassifyJson";
+        this.headers = new http_1.Headers({
             'Content-Type': 'application/json'
         });
-        var url = "http://angularattack2016-moody.herokuapp.com/sentiment140/bulkClassifyJson";
+    }
+    SentimentService.prototype.getSentiments = function () {
+        var _this = this;
         return this.social.getLatestTweets(0)
-            .then(function (tweets) { return _this.http.post(url, JSON.stringify({
+            .then(function (tweets) { return _this.http.post(_this.url, JSON.stringify({
             data: tweets.map(function (t) {
                 return { text: t.text };
             })
-        }), new http_1.RequestOptions({ headers: headers })).toPromise()
+        }), new http_1.RequestOptions({ headers: _this.headers })).toPromise()
+            .then(function (response) {
+            var sentiments = new Array();
+            var data = response.json().data;
+            for (var i = 0; i < tweets.length; i++) {
+                sentiments.push({
+                    username: tweets[i].user,
+                    polarity: data[i].polarity,
+                    status: tweets[i].text,
+                    avatarUrl: tweets[i].profileImageUrl,
+                    date: tweets[i].createdAt,
+                    profileUrl: tweets[i].url
+                });
+            }
+            return sentiments;
+        }); });
+    };
+    SentimentService.prototype.getUserSentiments = function (id) {
+        var _this = this;
+        return this.social.getUsersTweets(id)
+            .then(function (tweets) { return _this.http.post(_this.url, JSON.stringify({
+            data: tweets.map(function (t) {
+                return { text: t.text };
+            })
+        }), new http_1.RequestOptions({ headers: _this.headers })).toPromise()
             .then(function (response) {
             var sentiments = new Array();
             var data = response.json().data;

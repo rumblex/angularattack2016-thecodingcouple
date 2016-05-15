@@ -58,6 +58,32 @@ var SocialService = (function () {
             });
         });
     };
+    SocialService.prototype.getUsersTweets = function (id) {
+        return this.loginTwitter().then(function (twitter) {
+            var url = '/1.1/statuses/user_timeline.json';
+            url += "?count=200";
+            url += '&user_id=' + id;
+            return new Promise(function (resolve, reject) {
+                return twitter.get(url)
+                    .done(function (response) {
+                    var timeline = new Array();
+                    response.forEach(function (entry) {
+                        timeline.push({
+                            user: entry.user.name,
+                            profileImageUrl: entry.user.profile_image_url,
+                            text: entry.text,
+                            createdAt: new Date(entry.created_at),
+                            url: "http://twitter.com/statuses/" + entry.id_str
+                        });
+                    });
+                    resolve(timeline);
+                })
+                    .fail(function (error) {
+                    reject(error);
+                });
+            });
+        });
+    };
     SocialService.prototype.searchTwitterUsers = function (query) {
         return this.loginTwitter().then(function (twitter) {
             var q = encodeURIComponent(query);

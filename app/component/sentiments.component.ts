@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { OnActivate } from '@angular/router';
 import { Sentiment } from '../model/sentiment';
 import { SentimentDetailComponent } from './sentiment-detail.component';
+import { SentimentFilterComponent} from './sentiment-filter.component';
 import { SentimentService } from '../service/sentiment.service';
 
 @Component({
@@ -9,11 +10,19 @@ import { SentimentService } from '../service/sentiment.service';
     template: `
         <div class="container">
             <h1>Sentiments</h1>
-            <span class="fa fa-spinner fa-pulse fa-3x fa-fw" *ngIf="!sentiments"></span>
-            <sentiment-detail *ngFor="let sentiment of sentiments" [sentiment]="sentiment"></sentiment-detail>
+            <section class="col-md-3">
+                <sentiment-filter></sentiment-filter>
+            </section>
+            <section class="col-md-9">
+                <span class="fa fa-spinner fa-pulse fa-3x fa-fw" *ngIf="!sentiments"></span>
+                <sentiment-detail *ngFor="let sentiment of sentiments" [sentiment]="sentiment"></sentiment-detail>
+            </section>
         </div>
     `,
-    directives: [SentimentDetailComponent]
+    directives: [
+        SentimentDetailComponent,
+        SentimentFilterComponent
+    ]
 })
 export class SentimentsComponent implements OnActivate {
     sentiments: Sentiment[];
