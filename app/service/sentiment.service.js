@@ -44,9 +44,9 @@ var SentimentService = (function () {
             return sentiments;
         }); });
     };
-    SentimentService.prototype.getUserSentiments = function (id) {
+    SentimentService.prototype.getUserSentiments = function (user) {
         var _this = this;
-        return this.social.getUsersTweets(id)
+        return this.social.getUsersTweets(user.id)
             .then(function (tweets) { return _this.http.post(_this.url, JSON.stringify({
             data: tweets.map(function (t) {
                 return { text: t.text };
@@ -65,7 +65,7 @@ var SentimentService = (function () {
                     profileUrl: tweets[i].url
                 });
             }
-            return sentiments;
+            return { user: user, sentimentsByDate: sentiments };
         }); });
     };
     SentimentService = __decorate([

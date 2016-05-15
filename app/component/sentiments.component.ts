@@ -3,6 +3,7 @@ import { OnActivate } from '@angular/router';
 import { Sentiment } from '../model/sentiment';
 import { SentimentDetailComponent } from './sentiment-detail.component';
 import { SentimentFilterComponent} from './sentiment-filter.component';
+import { SentimentCountSummaryComponent } from './sentiment-count-summary.component';
 import { SentimentService } from '../service/sentiment.service';
 
 @Component({
@@ -14,14 +15,26 @@ import { SentimentService } from '../service/sentiment.service';
                 <sentiment-filter></sentiment-filter>
             </section>
             <section class="col-md-9">
-                <span class="fa fa-spinner fa-pulse fa-3x fa-fw" *ngIf="!sentiments"></span>
-                <sentiment-detail *ngFor="let sentiment of sentiments" [sentiment]="sentiment"></sentiment-detail>
+                <section class="rows">
+                    <div class="col-md-6">
+                        <h4>Percentage of Sentiments</h4>
+                    </div>
+                    <div class="col-md-6">
+                        <h4>Number of Sentiments</h4>
+                        <sentiment-count-summary [sentiments]="sentiments"></sentiment-count-summary>
+                    </div>
+                </section>
+                <section class="col-md-12">
+                    <span class="fa fa-spinner fa-pulse fa-3x fa-fw" *ngIf="!sentiments"></span>
+                    <sentiment-detail *ngFor="let sentiment of sentiments" [sentiment]="sentiment"></sentiment-detail>
+                </section>
             </section>
         </div>
     `,
     directives: [
         SentimentDetailComponent,
-        SentimentFilterComponent
+        SentimentFilterComponent,
+        SentimentCountSummaryComponent
     ]
 })
 export class SentimentsComponent implements OnActivate {

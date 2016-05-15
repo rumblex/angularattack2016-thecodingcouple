@@ -4,6 +4,7 @@ import { Component }  from '@angular/core';
     selector: 'sentiment-filter',
     template: `
         <div class="form-group">
+            <h4>Filter</h4>
             <label for="searchInput">Show sentiments for:</label>
             <div class="input-group">
                 <input id="searchInput" class="form-control" type="search" placeholder="Search"> 
