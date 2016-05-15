@@ -30,7 +30,7 @@ export class SentimentChartComponent implements AfterViewInit, OnChanges {
             data: {
                 datasets: [{
                     data: [this.numberOfPositiveSentiments(), this.numberOfNegativeSentiments(), this.numberOfNeutralSentiments()],
-                    backgroundColor: [ "#FF0000", "#00FF00", "#0000FF"],
+                    backgroundColor: [ "#b5f2b8", "#f26562", "#9bd7f2"],
                     label: 'Sentiments'
                 }],
                 labels: ["Positive", "Negative", "Neutral"]
