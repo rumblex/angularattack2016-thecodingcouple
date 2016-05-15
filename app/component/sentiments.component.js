@@ -31,17 +31,16 @@ var SentimentsComponent = (function () {
         for (var _i = 0, _a = this.selectedUsers; _i < _a.length; _i++) {
             var user = _a[_i];
             this.sentimentService.getSentimentsByUser(user)
-                .then(function (sentiments) { return _this.sentiments = _this.sentiments.concat(sentiments); });
+                .then(function (sentiments) { return _this.sentiments = _this.sentiments.concat(sentiments); }).then(function (merged) { return merged.sort(function (a, b) {
+                if (a.date.getTime() < b.date.getTime()) {
+                    return 1;
+                }
+                if (a.date.getTime() > b.date.getTime()) {
+                    return -1;
+                }
+                return 0;
+            }); });
         }
-        this.sentiments = this.sentiments.sort(function (a, b) {
-            if (a.date > b.date) {
-                return 1;
-            }
-            if (a.date < b.date) {
-                return -1;
-            }
-            return 0;
-        });
     };
     SentimentsComponent = __decorate([
         core_1.Component({

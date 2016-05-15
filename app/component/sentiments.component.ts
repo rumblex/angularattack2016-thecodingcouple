@@ -59,19 +59,17 @@ export class SentimentsComponent implements OnActivate {
         
         for(let user of this.selectedUsers) {            
             this.sentimentService.getSentimentsByUser(user)
-                                 .then(sentiments => this.sentiments = this.sentiments.concat(sentiments));
-        }
-         
-        this.sentiments = this.sentiments.sort((a, b) => {
-            if (a.date > b.date) {
-                return 1;
-            }
-            
-            if (a.date < b.date) {
-                return -1;
-            }
-            
-            return 0;
-        });                    
+                                 .then(sentiments => this.sentiments = this.sentiments.concat(sentiments)).then(merged => merged.sort((a,b) => {
+                                        if (a.date.getTime() < b.date.getTime()) {
+                                            return 1;
+                                        }
+                                        
+                                        if (a.date.getTime() > b.date.getTime()) {
+                                            return -1;
+                                        }
+                                        
+                                        return 0;
+                                 }));
+        }                    
     }
 }
