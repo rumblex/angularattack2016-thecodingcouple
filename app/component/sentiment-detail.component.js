@@ -10,6 +10,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var sentiment_1 = require('../model/sentiment');
+var moment_pipe_1 = require('../pipe/moment.pipe');
 var SentimentDetailComponent = (function () {
     function SentimentDetailComponent() {
     }
@@ -20,7 +21,8 @@ var SentimentDetailComponent = (function () {
     SentimentDetailComponent = __decorate([
         core_1.Component({
             selector: 'sentiment-detail',
-            template: "\n        <div class=\"list-group-item\" [class.list-group-item-danger]=\"sentiment.polarity === 0\" \n                                     [class.list-group-item-default]=\"sentiment.polarity === 2\" \n                                     [class.list-group-item-success]=\"sentiment.polarity === 4\" >\n            <div class=\"media\">\n                <div class=\"media-left\">\n                    <a href=\"#\">\n                        <img [src]=\"sentiment.avatarUrl\">\n                    </a>\n                </div>\n                <div class=\"media-body\">\n                    <h4 class=\"media-heading\"><a target=\"_blank\" [href]=\"sentiment.profileUrl\">{{sentiment.username}}</a></h4>\n                    <p>{{sentiment.status}}</p>\n                </div>\n            </div>\n        </div>\n    "
+            template: "\n        <div class=\"list-group-item\" [class.list-group-item-danger]=\"sentiment.polarity === 0\" \n                                     [class.list-group-item-default]=\"sentiment.polarity === 2\" \n                                     [class.list-group-item-success]=\"sentiment.polarity === 4\" >\n            <div class=\"media\">\n                <div class=\"media-left\">\n                    <a href=\"#\">\n                        <img [src]=\"sentiment.avatarUrl\">\n                    </a>\n                </div>\n                <div class=\"media-body\">\n                    <h4 class=\"media-heading\"><a target=\"_blank\" [href]=\"sentiment.profileUrl\">{{sentiment.username}}</a></h4>\n                    <p>{{sentiment.status}}</p>\n                    <p><small>{{sentiment.date | date:'longDate' }}</small></p>\n                </div>\n            </div>\n        </div>\n    ",
+            pipes: [moment_pipe_1.MomentPipe]
         }), 
         __metadata('design:paramtypes', [])
     ], SentimentDetailComponent);
