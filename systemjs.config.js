@@ -6,7 +6,7 @@
     'rxjs':                       'node_modules/rxjs',
     'angular2-in-memory-web-api': 'node_modules/angular2-in-memory-web-api',
     '@angular':                   'node_modules/@angular',
-    'oauth':                       'node_modules/oauthio-web/dist',
+    'oauth':                      'node_modules/oauthio-web/dist',
     'moment':                     'node_modules/moment',
   };
 
