@@ -16,6 +16,7 @@ import { User } from '../model/user';
                     <input id="searchInput" 
                         class="form-control" 
                         type="search" 
+                        autocomplete="off"
                         placeholder="Username" 
                         [typeahead]="findUsers(getContext())"
                         [typeaheadOptionsLimit]="20"
