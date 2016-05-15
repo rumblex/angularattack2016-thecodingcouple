@@ -10,7 +10,7 @@ import {SocialService} from "../service/social.service";
             <h1>MOODY</h1>
             <p>The emotional polarity of your social network.</p>
             <p>
-                <a class="btn btn-primary btn-lg" role="button" (click)="loginTwitter()">
+                <a class="btn btn-default btn-lg" role="button" (click)="loginTwitter()">
                     <span class="fa fa-twitter" aria-hidden="true"></span> 
                     Continue with Twitter
                 </a>

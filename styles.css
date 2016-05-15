@@ -1,0 +1,18 @@
+.jumbotron {
+    /* background: #0F2A40; 3F417F */
+    background: #4EB2CC;
+}
+
+.navbar {
+    /* background: #1E547F; */
+    background: white;
+    margin-bottom: 0;
+    border-top-color: #4EB2CC;
+    border-top-width: 5px;
+    border-bottom-color: #306F7F;
+    border-bottom-width: 2px;
+}
+
+body {
+    background: #F2F6F7;
+}
