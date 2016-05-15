@@ -14,6 +14,8 @@ declare var moment:any;
 @Pipe({ name: 'moment' })
 export class MomentPipe implements PipeTransform {
     transform(value, format) {
-        return moment(value, format);
+        let currentTime = moment(new Date());
+        let momentTime = moment(value);
+        return moment.duration(momentTime, currentTime).humanize();
     }
 }

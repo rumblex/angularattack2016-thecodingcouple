@@ -17,7 +17,7 @@ import { MomentPipe } from '../pipe/moment.pipe';
                 <div class="media-body">
                     <h4 class="media-heading"><a target="_blank" [href]="sentiment.profileUrl">{{sentiment.username}}</a></h4>
                     <p>{{sentiment.status}}</p>
-                    <p><small>{{sentiment.date | date:'longDate' }}</small></p>
+                    <p><small>{{sentiment.date | date: 'short' }}</small></p>
                 </div>
             </div>
         </div>
