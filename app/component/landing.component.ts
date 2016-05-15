@@ -21,7 +21,7 @@ import {SocialService} from "../service/social.service";
         <div class="rows">
             <div class="col-md-4">
                 <h2>Classify tweets</h2>
-                <p>Tweets are classified as positive, negative or neutral</p>
+                <p>Tweets are classified as positive, negative or neutral.</p>
             </div>            
             <div class="col-md-4">
                 <h2>Compare moods</h2>
