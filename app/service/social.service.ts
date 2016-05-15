@@ -88,7 +88,7 @@ export class SocialService {
     
     searchTwitterUsers(query:string) : Promise<User[]>{           
         return this.loginTwitter().then(twitter => {          
-                let q = query;
+                let q = encodeURIComponent(query);
                 let url = '1.1/users/search.json?q=';
                 url += q;
                 url += "&page=1&count=10";
@@ -110,7 +110,7 @@ export class SocialService {
                                 resolve(users);
                             })
                             .fail(error => {
-                                reject(error);
+                                resolve(new Array());
                             })
                     } else {
                         resolve(new Array());

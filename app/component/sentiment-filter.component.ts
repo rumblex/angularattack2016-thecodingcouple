@@ -17,11 +17,14 @@ import { User } from '../model/user';
                        class="form-control" 
                        type="search" 
                        placeholder="Username" 
-                       [typeahead]="matchingUsers"
-                       [typeaheadOptionField]="'name'"
+                       [typeahead]="findUsers(getContext())"
+                       [typeaheadOptionsLimit]="20"
                        (typeaheadOnSelect)="userSelected($event)"
-                       [(ngModel)]="searchText"
-                       (keyup)="findUsers(searchText)">           
+                       [(ngModel)]="searchText"> 
+                <span class="input-group-addon">
+                    <span class="fa fa-search" aria-hidden="true"></span>
+                </span>                
+
             </div>
         </div>
     `,
@@ -34,19 +37,37 @@ export class SentimentFilterComponent {
     searchText: string;
     matchingUsers: User[];
     selectedUsers: User[];
+    cache: any;
+    previousSearchText: string;
     
     constructor(private socialService: SocialService) {
         this.matchingUsers = new Array();
         this.selectedUsers = new Array();
+        this.searchText = "";
     }
     
-    findUsers(query) {
-        this.socialService.searchTwitterUsers(query)
-                          .then(users => this.matchingUsers = users);
+    findUsers(context) {
+        if (context.cache && context.previousSearchText === context.searchText) {
+            return function() {return context.cache;};
+        }
+        
+        context.previousSearchText = context.searchText;
+        let query = new RegExp(context.searchText, 'ig');
+        
+        context.cache = context.socialService.searchTwitterUsers(context.searchText)
+                          .then(users => users.map((user) => user.name));
+                          
+           
+        return function() { return context.cache; };
     }
     
     userSelected(event) {
         this.selectedUsers.push(event.item);        
         this.usersChanged.emit(this.selectedUsers);
-    }    
+    }
+    
+    getContext() {
+        return this;
+    }
+    
 }
