@@ -86,7 +86,7 @@ var SocialService = (function () {
     };
     SocialService.prototype.searchTwitterUsers = function (query) {
         return this.loginTwitter().then(function (twitter) {
-            var q = query;
+            var q = encodeURIComponent(query);
             var url = '1.1/users/search.json?q=';
             url += q;
             url += "&page=1&count=10";
@@ -107,7 +107,7 @@ var SocialService = (function () {
                         resolve(users);
                     })
                         .fail(function (error) {
-                        reject(error);
+                        resolve(new Array());
                     });
                 }
                 else {
