@@ -14,10 +14,6 @@ import {SocialService} from "../service/social.service";
                     <span class="fa fa-twitter" aria-hidden="true"></span> 
                     Continue with Twitter
                 </a>
-                <a class="btn btn-primary btn-lg" role="button">
-                    <span class="fa fa-facebook" aria-hidden="true"></span> 
-                    Continue with Facebook
-                </a>
             </p>         
         </div>  
     </div>
@@ -39,7 +35,6 @@ import {SocialService} from "../service/social.service";
     </div>
     `
 })
-
 export class LandingComponent {
      constructor(private social: SocialService, private router: Router){
         

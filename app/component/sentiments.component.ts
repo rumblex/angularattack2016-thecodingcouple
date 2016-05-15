@@ -13,8 +13,9 @@ import { SentimentService } from '../service/sentiment.service';
             <h1>Sentiments</h1>
             <section class="col-md-3">
                 <sentiment-filter></sentiment-filter>
-            </section>
-            <section class="col-md-9">
+            </section>            
+            <span class="fa fa-spinner fa-pulse fa-3x fa-fw" *ngIf="!sentiments"></span>
+            <section class="col-md-9" *ngIf="sentiments">
                 <section class="rows">
                     <div class="col-md-6">
                         <h4>Percentage of Sentiments</h4>
@@ -25,7 +26,6 @@ import { SentimentService } from '../service/sentiment.service';
                     </div>
                 </section>
                 <section class="col-md-12">
-                    <span class="fa fa-spinner fa-pulse fa-3x fa-fw" *ngIf="!sentiments"></span>
                     <sentiment-detail *ngFor="let sentiment of sentiments" [sentiment]="sentiment"></sentiment-detail>
                 </section>
             </section>
@@ -46,6 +46,6 @@ export class SentimentsComponent implements OnActivate {
     
     routerOnActivate() {
          return this.sentimentService.getSentiments()
-                                    .then(sentiments => this.sentiments = sentiments);
+                                     .then(sentiments => this.sentiments = sentiments);
     }
 }
