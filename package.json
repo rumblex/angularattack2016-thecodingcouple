@@ -7,7 +7,11 @@
     "postinstall": "typings install",
     "tsc": "tsc",
     "tsc:w": "tsc -w",
-    "typings": "typings"
+    "typings": "typings",
+    "build": "tsc",
+    "build:w": "tsc --watch",
+    "bundle": "node systemjs.bundle.js",
+    "bundle:prod": "node systemjs.bundle.js --prod"
   },
   "license": "MIT",
   "dependencies": {
@@ -33,7 +37,9 @@
   "devDependencies": {
     "concurrently": "^2.0.0",
     "lite-server": "^2.2.0",
+    "systemjs-builder": "^0.15.16",
     "typescript": "^1.8.10",
-    "typings": "^0.8.1"
+    "typings": "^0.8.1",
+    "yargs": "^4.7.0"
   }
 }
