@@ -1,6 +1,6 @@
 import { Component }  from '@angular/core';
 import { CORE_DIRECTIVES, FORM_DIRECTIVES } from '@angular/common';
-import { TYPEAHEAD_DIRECTIVES } from 'ng2-bootstrap/ng2-bootstrap';
+//import { TYPEAHEAD_DIRECTIVES } from 'ng2-bootstrap/ng2-bootstrap';
 import { SocialService } from '../service/social.service';
 import { User } from '../model/user';
 
@@ -25,7 +25,7 @@ import { User } from '../model/user';
             </div>
         </div>
     `,
-    directives: [TYPEAHEAD_DIRECTIVES, CORE_DIRECTIVES, FORM_DIRECTIVES]
+    //directives: [TYPEAHEAD_DIRECTIVES, CORE_DIRECTIVES, FORM_DIRECTIVES]
 })
 export class SentimentFilterComponent {
     searchText: string;
