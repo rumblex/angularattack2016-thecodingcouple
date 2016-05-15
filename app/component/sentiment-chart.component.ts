@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, AfterViewInit } from '@angular/core';
+import { Component, OnInit, Input, AfterViewInit, OnChanges } from '@angular/core';
 import { Sentiment } from '../model/sentiment';
 import { OnActivate } from '@angular/router';
 
@@ -12,7 +12,7 @@ declare var Chart:any;
         </div>
     `
 })
-export class SentimentChartComponent implements AfterViewInit {    
+export class SentimentChartComponent implements AfterViewInit, OnChanges {    
     @Input()
     sentiments: Sentiment[];
     context: any;
@@ -25,47 +25,44 @@ export class SentimentChartComponent implements AfterViewInit {
     ngAfterViewInit() {
         let canvas = <HTMLCanvasElement> document.getElementById("mychart");
         this.context = <CanvasRenderingContext2D> canvas.getContext("2d");
+        this.chart = new Chart(this.context, {
+            type: 'doughnut',
+            data: {
+                datasets: [{
+                    data: [this.numberOfPositiveSentiments(), this.numberOfNegativeSentiments(), this.numberOfNeutralSentiments()],
+                    backgroundColor: [ "#FF0000", "#00FF00", "#0000FF"],
+                    label: 'Sentiments'
+                }],
+                labels: ["Positive", "Negative", "Neutral"]
+            }
+        });       
+    }
+    
+    ngOnChanges(changes: {[propertyName: string]: SimpleChange}) {
+        // let canvas = <HTMLCanvasElement> document.getElementById("mychart");
+        // this.context = <CanvasRenderingContext2D> canvas.getContext("2d");
         // this.chart = new Chart(this.context, {
         //     type: 'doughnut',
         //     data: {
         //         datasets: [{
-        //             data: [5, 10, 15],
+        //             data: [this.numberOfPositiveSentiments(), this.numberOfNegativeSentiments(), this.numberOfNeutralSentiments()],
         //             backgroundColor: [ "#FF0000", "#00FF00", "#0000FF"],
         //             label: 'Sentiments'
         //         }],
         //         labels: ["Positive", "Negative", "Neutral"]
         //     }
-        // });
-        this.chart = new Chart(this.context, {
-            type: 'doughnut',
-            data: {
-                labels: [
-                    "Red",
-                    "Green",
-                    "Yellow"
-                ],
-                datasets: [
-                    {
-                        data: [300, 50, 100],
-                        backgroundColor: [
-                            "#FF6384",
-                            "#36A2EB",
-                            "#FFCE56"
-                        ],
-                        hoverBackgroundColor: [
-                            "#FF6384",
-                            "#36A2EB",
-                            "#FFCE56"
-                        ]
-                    }]
-            },
-            options: {
-                elements: {
-                    arc: {
-                        borderColor: "#000000"
-                    }
-                }
-            }
-        });
+        // });      
     }    
+    
+    numberOfPositiveSentiments() {
+        return this.sentiments.filter(sentiment => sentiment.polarity === 4).length;
+    }
+    
+    numberOfNegativeSentiments() {        
+        return this.sentiments.filter(sentiment => sentiment.polarity === 0).length;
+    }
+    
+    numberOfNeutralSentiments() {        
+        return this.sentiments.filter(sentiment => sentiment.polarity === 2).length;
+    }
 }
