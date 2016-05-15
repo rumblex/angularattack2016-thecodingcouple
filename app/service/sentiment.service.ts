@@ -11,7 +11,7 @@ export class SentimentService {
     headers:Headers;
     
     constructor(private social : SocialService, private http: Http) {
-        this.url = "http://angularattack2016-moody.herokuapp.com/sentiment140/bulkClassifyJson";
+        this.url = "https://angularattack2016-moody.herokuapp.com/sentiment140/bulkClassifyJson";
         this.headers = new Headers({ 
             'Content-Type': 'application/json' 
         });
