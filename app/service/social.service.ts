@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Tweet } from '../model/tweet';
+import { User } from '../model/user';
 
 declare var OAuth:any;
 
@@ -55,5 +56,34 @@ export class SocialService {
                     })
             );
        });
+    }
+    
+    searchTwitterUsers(query:string) : Promise<User[]>{              
+        return this.loginTwitter().then(twitter => {
+            let q = encodeURIComponent(query);
+            let url = '1.1/users/search.json?q=';
+            url += q;
+            url += "&page=1&count=10";
+            
+            return new Promise<User[]>((resolve, reject) =>
+                twitter.get(url)
+                    .done(response => {
+                        let users:User[] = new Array();
+                        response.forEach(entry => {
+                            users.push({
+                                id: entry.id,
+                                name: entry.name, 
+                                profileImageUrl: entry.profile_image_url, 
+                                username: entry.screen_name, 
+                                url: "http://twitter.com/statuses/" + entry.id_str
+                            }) 
+                        });
+                        resolve(users);
+                    })
+                    .fail(error => {
+                        reject(error);
+                    })
+            );
+       }); 
     }   
 }
