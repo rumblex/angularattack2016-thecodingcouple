@@ -1,6 +1,5 @@
 import { Component, Input } from '@angular/core';
 import { Sentiment } from '../model/sentiment';
-import { MomentPipe } from '../pipe/moment.pipe';
 
 @Component({
     selector: 'sentiment-detail',
@@ -22,7 +21,6 @@ import { MomentPipe } from '../pipe/moment.pipe';
             </div>
         </div>
     `,
-    pipes: [MomentPipe]
 })
 export class SentimentDetailComponent {
     @Input()
