@@ -7,7 +7,7 @@ import {SocialService} from "../service/social.service";
     template: `
     <div class="jumbotron">
         <div class="container">
-            <h1>MOODY</h1>
+            <h1 class="moody">MOODY</h1>
             <p>The emotional polarity of your social network.</p>
             <p>
                 <a class="btn btn-default btn-lg" role="button" (click)="loginTwitter()">
@@ -20,15 +20,15 @@ import {SocialService} from "../service/social.service";
     <div class="container">
         <div class="rows">
             <div class="col-md-4">
-                <h2>Feature 1</h2>
-                <p>Blah blah blah</p>
+                <h2>Classify statuses</h2>
+                <p>Statuses fall under positive, negative or neutral</p>
             </div>            
             <div class="col-md-4">
-                <h2>Feature 2</h2>
-                <p>Blah blah blah</p>
+                <h2>Compare moods</h2>
+                <p>Who is the most positive or the most negative among your friends?</p>
             </div>            
             <div class="col-md-4">
-                <h2>Feature 3</h2>
+                <h2>Powered by Sentiment140</h2>
                 <p>Blah blah blah</p>
             </div>
         </div>
