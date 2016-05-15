@@ -17,16 +17,20 @@ var sentiment_service_1 = require('../service/sentiment.service');
 var SentimentsComponent = (function () {
     function SentimentsComponent(sentimentService) {
         this.sentimentService = sentimentService;
+        this.selectedUsers = new Array();
     }
     SentimentsComponent.prototype.routerOnActivate = function () {
         var _this = this;
         return this.sentimentService.getSentiments()
             .then(function (sentiments) { return _this.sentiments = sentiments; });
     };
+    SentimentsComponent.prototype.usersChanged = function (users) {
+        this.selectedUsers = users;
+    };
     SentimentsComponent = __decorate([
         core_1.Component({
             selector: 'sentiments',
-            template: "\n        <div class=\"container\">\n            <h1>Sentiments</h1>\n            <section class=\"col-md-3 panel panel-default\">\n                <sentiment-filter></sentiment-filter>\n            </section>            \n            <span class=\"fa fa-spinner fa-pulse fa-3x fa-fw\" *ngIf=\"!sentiments\"></span>\n            <section class=\"col-md-9 panel panel-default\" *ngIf=\"sentiments\">\n                <section class=\"col-md-6 panel-body\">\n                    <h4>Percentage of Sentiments</h4>\n                    <sentiment-chart [sentiments]=\"sentiments\"></sentiment-chart>\n                </section>\n                <section class=\"col-md-6 panel-body\">\n                    <h4>Number of Sentiments <span class=\"badge\">{{sentiments.length}}</span></h4>\n                    <sentiment-count-summary [sentiments]=\"sentiments\"></sentiment-count-summary>\n                </section>\n                <section class=\"col-md-12 panel-body\">\n                    <h4>Statuses</h4>\n                    <sentiment-detail *ngFor=\"let sentiment of sentiments\" [sentiment]=\"sentiment\"></sentiment-detail>\n                </section>\n            </section>\n        </div>\n    ",
+            template: "\n        <div class=\"container\">\n            <h1>Sentiments</h1>\n            <section class=\"col-md-3 panel panel-default\">\n                <sentiment-filter (usersChanged)=\"usersChanged($event)\"></sentiment-filter>\n            </section>            \n            <span class=\"fa fa-spinner fa-pulse fa-3x fa-fw\" *ngIf=\"!sentiments\"></span>\n            <section class=\"col-md-9 panel panel-default\" *ngIf=\"sentiments\">\n                <section class=\"col-md-6 panel-body\">\n                    <h4>Percentage of Sentiments</h4>\n                    <sentiment-chart [sentiments]=\"sentiments\"></sentiment-chart>\n                </section>\n                <section class=\"col-md-6 panel-body\">\n                    <h4>Number of Sentiments <span class=\"badge\">{{sentiments.length}}</span></h4>\n                    <sentiment-count-summary [sentiments]=\"sentiments\"></sentiment-count-summary>\n                </section>\n                <section class=\"col-md-12 panel-body\">\n                    <h4>Statuses</h4>\n                    <sentiment-detail *ngFor=\"let sentiment of sentiments\" [sentiment]=\"sentiment\"></sentiment-detail>\n                </section>\n            </section>\n        </div>\n    ",
             directives: [
                 sentiment_detail_component_1.SentimentDetailComponent,
                 sentiment_filter_component_1.SentimentFilterComponent,

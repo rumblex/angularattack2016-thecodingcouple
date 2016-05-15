@@ -1,4 +1,4 @@
-import { Component }  from '@angular/core';
+import { Component, Output, EventEmitter }  from '@angular/core';
 import { CORE_DIRECTIVES, FORM_DIRECTIVES } from '@angular/common';
 import { TYPEAHEAD_DIRECTIVES } from 'ng2-bootstrap/ng2-bootstrap';
 import { SocialService } from '../service/social.service';
@@ -28,12 +28,16 @@ import { User } from '../model/user';
     directives: [TYPEAHEAD_DIRECTIVES, CORE_DIRECTIVES, FORM_DIRECTIVES]
 })
 export class SentimentFilterComponent {
+    @Output()
+    usersChanged = new EventEmitter<User[]>();
+    
     searchText: string;
     matchingUsers: User[];
     selectedUsers: User[];
     
     constructor(private socialService: SocialService) {
         this.matchingUsers = new Array();
+        this.selectedUsers = new Array();
     }
     
     findUsers(query) {
@@ -42,6 +46,7 @@ export class SentimentFilterComponent {
     }
     
     userSelected(event) {
-        this.selectedUsers.push(event.item);
-    }
+        this.selectedUsers.push(event.item);        
+        this.usersChanged.emit(this.selectedUsers);
+    }    
 }
