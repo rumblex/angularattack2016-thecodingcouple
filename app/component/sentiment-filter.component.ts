@@ -17,6 +17,8 @@ import { User } from '../model/user';
                        type="search" 
                        placeholder="Search users" 
                        [typeahead]="matchingUsers"
+                       [typeaheadOptionField]="name"
+                       (typeaheadOnSelect)="userSelected($event)"
                        [(ngModel)]="searchText"
                        (keyup)="findUsers(searchText)"> 
                 <span class="input-group-addon">
@@ -30,6 +32,7 @@ import { User } from '../model/user';
 export class SentimentFilterComponent {
     searchText: string;
     matchingUsers: User[];
+    selectedUsers: User[];
     
     constructor(private socialService: SocialService) {
         
@@ -38,5 +41,9 @@ export class SentimentFilterComponent {
     findUsers(query) {
         this.socialService.searchTwitterUsers(query)
                           .then(users => this.matchingUsers = users);
+    }
+    
+    userSelected(event) {
+        this.selectedUsers.push(event.item);
     }
 }
