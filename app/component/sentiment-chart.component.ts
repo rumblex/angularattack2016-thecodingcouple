@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, AfterViewInit, OnChanges } from '@angular/core';
+import { Component, OnInit, Input, AfterViewInit, OnChanges, SimpleChange } from '@angular/core';
 import { Sentiment } from '../model/sentiment';
 import { OnActivate } from '@angular/router';
 
@@ -39,19 +39,10 @@ export class SentimentChartComponent implements AfterViewInit, OnChanges {
     }
     
     ngOnChanges(changes: {[propertyName: string]: SimpleChange}) {
-        // let canvas = <HTMLCanvasElement> document.getElementById("mychart");
-        // this.context = <CanvasRenderingContext2D> canvas.getContext("2d");
-        // this.chart = new Chart(this.context, {
-        //     type: 'doughnut',
-        //     data: {
-        //         datasets: [{
-        //             data: [this.numberOfPositiveSentiments(), this.numberOfNegativeSentiments(), this.numberOfNeutralSentiments()],
-        //             backgroundColor: [ "#FF0000", "#00FF00", "#0000FF"],
-        //             label: 'Sentiments'
-        //         }],
-        //         labels: ["Positive", "Negative", "Neutral"]
-        //     }
-        // });      
+        if(this.chart && this.chart.data.datasets[0]) {            
+            this.chart.data.datasets[0].data = [this.numberOfPositiveSentiments(), this.numberOfNegativeSentiments(), this.numberOfNeutralSentiments()];
+            this.chart.update();
+        }
     }    
     
     numberOfPositiveSentiments() {
