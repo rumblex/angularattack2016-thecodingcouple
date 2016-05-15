@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Sentiment } from '../model/sentiment';
+import { OnActivate } from '@angular/router';
 
 declare var Chart:any;
 
@@ -7,15 +8,15 @@ declare var Chart:any;
     selector: 'sentiment-chart',
     template: `
         <section>
-            <canvas id="chart" width="400" height="400"></canvas>
+            <canvas id="chart" width="400" height="200"></canvas>
         </section>
     `
 })
-export class SentimentChartComponent implements OnInit {    
+export class SentimentChartComponent implements OnActivate {    
     @Input()
     sentiments: Sentiment[];
     
-    ngOnInit() {
+    routerOnActivate() {
         let chartContext = document.getElementById("chart");
         let chart = new Chart(chartContext, {
             type: 'doughnut',

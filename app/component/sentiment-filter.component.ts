@@ -1,4 +1,4 @@
-import { Component }  from '@angular/core';
+import { Component, Output, EventEmitter }  from '@angular/core';
 import { CORE_DIRECTIVES, FORM_DIRECTIVES } from '@angular/common';
 import { TYPEAHEAD_DIRECTIVES } from 'ng2-bootstrap/ng2-bootstrap';
 import { SocialService } from '../service/social.service';
@@ -11,11 +11,12 @@ import { User } from '../model/user';
         <div class="form-group">
             <h4>Filter</h4>
             <label for="searchInput">Show sentiments for:</label>
-            <div class="input-group">
+            <div class="input-group">            
+                <span class="input-group-addon">@</span>      
                 <input id="searchInput" 
                        class="form-control" 
                        type="search" 
-                       placeholder="Search users" 
+                       placeholder="Username" 
                        [typeahead]="findUsers(getContext())"
                        [typeaheadOptionsLimit]="20"
                        (typeaheadOnSelect)="userSelected($event)"
@@ -23,12 +24,16 @@ import { User } from '../model/user';
                 <span class="input-group-addon">
                     <span class="fa fa-search" aria-hidden="true"></span>
                 </span>                
+
             </div>
         </div>
     `,
     directives: [TYPEAHEAD_DIRECTIVES, CORE_DIRECTIVES, FORM_DIRECTIVES]
 })
 export class SentimentFilterComponent {
+    @Output()
+    usersChanged = new EventEmitter<User[]>();
+    
     searchText: string;
     matchingUsers: User[];
     selectedUsers: User[];
@@ -57,7 +62,8 @@ export class SentimentFilterComponent {
     }
     
     userSelected(event) {
-        this.selectedUsers.push(event.item);
+        this.selectedUsers.push(event.item);        
+        this.usersChanged.emit(this.selectedUsers);
     }
     
     getContext() {
