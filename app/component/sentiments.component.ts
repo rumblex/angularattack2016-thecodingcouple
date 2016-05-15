@@ -13,8 +13,8 @@ import { User } from '../model/user';
     template: `
         <div class="container">
             <h1>Sentiments</h1>
-            <section class="col-md-3 panel panel-default">
-                <sentiment-filter (usersChanged)="usersChanged($event)"></sentiment-filter>
+            <section class="col-md-3 panel panel-default">            
+                <sentiment-filter class="panel-body" (usersChanged)="usersChanged($event)"></sentiment-filter>
             </section>            
             <span class="fa fa-spinner fa-pulse fa-3x fa-fw" *ngIf="!sentiments"></span>
             <section class="col-md-9 panel panel-default" *ngIf="sentiments">
