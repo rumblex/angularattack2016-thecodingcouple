@@ -36,6 +36,7 @@ export class SentimentFilterComponent {
     
     constructor(private socialService: SocialService) {
         this.matchingUsers = new Array();
+        this.selectedUsers = new Array();
     }
     
     findUsers(query) {
