@@ -20,7 +20,7 @@ import { User } from '../model/user';
                         [typeahead]="findUsers(getContext())"
                         [typeaheadOptionsLimit]="20"
                         [typeaheadOptionField]="'name'"
-                        (typeaheadOnSelect)="userSelected($event)"
+                        (typeaheadOnSelect)="userSelected($event); searchText = '';"
                         [(ngModel)]="searchText"> 
                     <span class="input-group-addon">
                         <span class="fa fa-search" aria-hidden="true"></span>
@@ -67,7 +67,6 @@ export class SentimentFilterComponent {
     
     userSelected(event) {
         this.selectedUsers.push(event.item);        
-        this.searchText = "";
         this.usersChanged.emit(this.selectedUsers);
     }
     
