@@ -4,6 +4,7 @@ import { Sentiment } from '../model/sentiment';
 import { SentimentDetailComponent } from './sentiment-detail.component';
 import { SentimentFilterComponent} from './sentiment-filter.component';
 import { SentimentCountSummaryComponent } from './sentiment-count-summary.component';
+import { SentimentChartComponent } from './sentiment-chart.component';
 import { SentimentService } from '../service/sentiment.service';
 
 @Component({
@@ -19,6 +20,7 @@ import { SentimentService } from '../service/sentiment.service';
                 <section class="rows">
                     <div class="col-md-6">
                         <h4>Percentage of Sentiments</h4>
+                        <sentiment-chart [sentiments]="sentiments"></sentiment-chart>
                     </div>
                     <div class="col-md-6">
                         <h4>Number of Sentiments <span class="badge">{{sentiments.length}}</span></h4>
@@ -35,7 +37,8 @@ import { SentimentService } from '../service/sentiment.service';
     directives: [
         SentimentDetailComponent,
         SentimentFilterComponent,
-        SentimentCountSummaryComponent
+        SentimentCountSummaryComponent,
+        SentimentChartComponent
     ]
 })
 export class SentimentsComponent implements OnActivate {
