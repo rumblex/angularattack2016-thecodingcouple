@@ -4,4 +4,8 @@ export class User {
     name:string;
     profileImageUrl:string;
     url:string;
+    
+    toString() : string {
+        return name;
+    }
 }
