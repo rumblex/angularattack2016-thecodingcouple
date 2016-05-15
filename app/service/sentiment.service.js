@@ -15,7 +15,7 @@ var SentimentService = (function () {
     function SentimentService(social, http) {
         this.social = social;
         this.http = http;
-        this.url = "http://angularattack2016-moody.herokuapp.com/sentiment140/bulkClassifyJson";
+        this.url = "https://angularattack2016-moody.herokuapp.com/sentiment140/bulkClassifyJson";
         this.headers = new http_1.Headers({
             'Content-Type': 'application/json'
         });
