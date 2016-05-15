@@ -17,7 +17,6 @@ import { User } from '../model/user';
                        type="search" 
                        placeholder="Search users" 
                        [(ngModel)]="searchText"
-                       [typeahead]="matchingUsers" 
                        (keyup)="findUsers(searchText)"> 
                 <span class="input-group-addon">
                     <span class="fa fa-search" aria-hidden="true"></span>
