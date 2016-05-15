@@ -5,27 +5,49 @@ import { Sentiment } from '../model/sentiment';
 
 @Injectable()
 export class SentimentService {
+    url:string;    
+    headers:Headers;
     
     constructor(private social : SocialService, private http: Http) {
-        
-    }
-    
-    // getSentiments() {
-    //      return Promise.resolve(SENTIMENTS);
-    //  }
-    
-    getSentiments() {
-        let headers = new Headers({ 
+        this.url = "http://angularattack2016-moody.herokuapp.com/sentiment140/bulkClassifyJson";
+        this.headers = new Headers({ 
             'Content-Type': 'application/json' 
         });
-        let url = "http://angularattack2016-moody.herokuapp.com/sentiment140/bulkClassifyJson";
-        
+    }
+    
+    getSentiments() {      
         return this.social.getLatestTweets(0)
-                          .then(tweets => this.http.post(url, JSON.stringify({
+                          .then(tweets => this.http.post(this.url, JSON.stringify({
                                 data: tweets.map(function(t){
                                     return {text: t.text};
                                 })
-                            }), new RequestOptions({headers: headers})).toPromise()
+                            }), new RequestOptions({headers: this.headers})).toPromise()
+                          .then(response => {
+                                let sentiments : Sentiment[] = new Array();
+                                let data = response.json().data;
+                                for (let i = 0; i < tweets.length; i++) {
+                                    sentiments.push({
+                                        username: tweets[i].user, 
+                                        polarity: data[i].polarity, 
+                                        status: tweets[i].text, 
+                                        avatarUrl: tweets[i].profileImageUrl, 
+                                        date: tweets[i].createdAt,
+                                        profileUrl: tweets[i].url
+                                    });
+                                }
+                                
+                                return sentiments;
+                          }));
+                            
+    }
+    
+    getUserSentiments(id:number) {      
+        return this.social.getUsersTweets(id)
+                          .then(tweets => this.http.post(this.url, JSON.stringify({
+                                data: tweets.map(function(t){
+                                    return {text: t.text};
+                                })
+                            }), new RequestOptions({headers: this.headers})).toPromise()
                           .then(response => {
                                 let sentiments : Sentiment[] = new Array();
                                 let data = response.json().data;
