@@ -58,6 +58,34 @@ export class SocialService {
        });
     }
     
+    getUsersTweets(id:number) : Promise<Tweet[]> {
+        return this.loginTwitter().then(twitter => {
+            let url = '/1.1/statuses/user_timeline.json';
+            url += "?count=200";
+            url += '&user_id=' + id;
+          
+            return new Promise<Tweet[]>((resolve, reject) =>
+                twitter.get(url)
+                    .done(response => {
+                        let timeline:Tweet[] = new Array();
+                        response.forEach(entry => {
+                            timeline.push({
+                                user: entry.user.name, 
+                                profileImageUrl: entry.user.profile_image_url, 
+                                text: entry.text, 
+                                createdAt: new Date(entry.created_at), 
+                                url: "http://twitter.com/statuses/" + entry.id_str
+                            }) 
+                        });
+                        resolve(timeline);
+                    })
+                    .fail(error => {
+                        reject(error);
+                    })
+            );
+       });
+    }
+    
     searchTwitterUsers(query:string) : Promise<User[]>{              
         return this.loginTwitter().then(twitter => {
             let q = encodeURIComponent(query);
