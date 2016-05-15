@@ -12,11 +12,11 @@ import { SentimentService } from '../service/sentiment.service';
     template: `
         <div class="container">
             <h1>Sentiments</h1>
-            <section class="col-md-3">
+            <section class="col-md-3 panel panel-default">
                 <sentiment-filter></sentiment-filter>
             </section>            
             <span class="fa fa-spinner fa-pulse fa-3x fa-fw" *ngIf="!sentiments"></span>
-            <section class="col-md-9" *ngIf="sentiments">
+            <section class="col-md-9 panel panel-default" *ngIf="sentiments">
                 <section class="rows">
                     <div class="col-md-6">
                         <h4>Percentage of Sentiments</h4>

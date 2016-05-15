@@ -11,19 +11,17 @@ import { User } from '../model/user';
         <div class="form-group">
             <h4>Filter</h4>
             <label for="searchInput">Show sentiments for:</label>
-            <div class="input-group">
+            <div class="input-group">            
+                <span class="input-group-addon">@</span>      
                 <input id="searchInput" 
                        class="form-control" 
                        type="search" 
-                       placeholder="Search users" 
+                       placeholder="Username" 
                        [typeahead]="matchingUsers"
                        [typeaheadOptionField]="'name'"
                        (typeaheadOnSelect)="userSelected($event)"
                        [(ngModel)]="searchText"
-                       (keyup)="findUsers(searchText)"> 
-                <span class="input-group-addon">
-                    <span class="fa fa-search" aria-hidden="true"></span>
-                </span>                
+                       (keyup)="findUsers(searchText)">           
             </div>
         </div>
     `,
