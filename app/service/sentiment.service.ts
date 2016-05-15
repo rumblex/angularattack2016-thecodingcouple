@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { SocialService } from './social.service';
 import { Http, Response, Headers, RequestOptions } from '@angular/http';
 import { Sentiment } from '../model/sentiment';
+import { User } from '../model/user';
+import { UserSentiments } from '../model/user-sentiments';
 
 @Injectable()
 export class SentimentService {
@@ -41,8 +43,8 @@ export class SentimentService {
                             
     }
     
-    getUserSentiments(id:number) {      
-        return this.social.getUsersTweets(id)
+    getUserSentiments(user:User) : Promise<UserSentiments> {      
+        return this.social.getUsersTweets(user.id)
                           .then(tweets => this.http.post(this.url, JSON.stringify({
                                 data: tweets.map(function(t){
                                     return {text: t.text};
@@ -62,7 +64,7 @@ export class SentimentService {
                                     });
                                 }
                                 
-                                return sentiments;
+                                return {user: user, sentimentsByDate: sentiments};
                           }));
                             
     }
