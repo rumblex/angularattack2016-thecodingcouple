@@ -6,7 +6,8 @@
     'rxjs':                       'node_modules/rxjs',
     'angular2-in-memory-web-api': 'node_modules/angular2-in-memory-web-api',
     '@angular':                   'node_modules/@angular',
-    'oauth':                      'node_modules/oauthio-web/dist',
+
+
     'ng2-bootstrap':              'node_modules/ng2-bootstrap',
   };
 
@@ -15,7 +16,7 @@
     'app':                        { main: 'main.js',  defaultExtension: 'js' },
     'rxjs':                       { defaultExtension: 'js' },
     'angular2-in-memory-web-api': { defaultExtension: 'js' },
-    'oauth':                      { defaultExtension: 'js' },
+
     'ng2-bootstrap':              { defaultExtension: 'js' },
   };
 
