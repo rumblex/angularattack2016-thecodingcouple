@@ -44,6 +44,30 @@ var SentimentService = (function () {
             return sentiments;
         }); });
     };
+    SentimentService.prototype.getSentimentsByUser = function (user) {
+        var _this = this;
+        return this.social.getUsersTweets(user.id)
+            .then(function (tweets) { return _this.http.post(_this.url, JSON.stringify({
+            data: tweets.map(function (t) {
+                return { text: t.text };
+            })
+        }), new http_1.RequestOptions({ headers: _this.headers })).toPromise()
+            .then(function (response) {
+            var sentiments = new Array();
+            var data = response.json().data;
+            for (var i = 0; i < tweets.length; i++) {
+                sentiments.push({
+                    username: tweets[i].user,
+                    polarity: data[i].polarity,
+                    status: tweets[i].text,
+                    avatarUrl: tweets[i].profileImageUrl,
+                    date: tweets[i].createdAt,
+                    profileUrl: tweets[i].url
+                });
+            }
+            return sentiments;
+        }); });
+    };
     SentimentService.prototype.getUserSentiments = function (user) {
         var _this = this;
         return this.social.getUsersTweets(user.id)

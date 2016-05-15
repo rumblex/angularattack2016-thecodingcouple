@@ -43,6 +43,31 @@ export class SentimentService {
                             
     }
     
+    getSentimentsByUser(user: User) : Promise<Sentiment[]> {
+        return this.social.getUsersTweets(user.id)
+                    .then(tweets => this.http.post(this.url, JSON.stringify({
+                        data: tweets.map(function(t){
+                            return {text: t.text};
+                        })
+                    }), new RequestOptions({headers: this.headers})).toPromise()
+                    .then(response => {
+                        let sentiments : Sentiment[] = new Array();
+                        let data = response.json().data;
+                        for (let i = 0; i < tweets.length; i++) {
+                            sentiments.push({
+                                username: tweets[i].user, 
+                                polarity: data[i].polarity, 
+                                status: tweets[i].text, 
+                                avatarUrl: tweets[i].profileImageUrl, 
+                                date: tweets[i].createdAt,
+                                profileUrl: tweets[i].url
+                            });
+                        }
+                        
+                        return sentiments;
+                    }));
+    }
+    
     getUserSentiments(user:User) : Promise<UserSentiments> {      
         return this.social.getUsersTweets(user.id)
                           .then(tweets => this.http.post(this.url, JSON.stringify({

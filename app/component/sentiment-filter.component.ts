@@ -8,25 +8,29 @@ import { User } from '../model/user';
 @Component({
     selector: 'sentiment-filter',
     template: `
-        <div class="form-group">
-            <h4>Filter</h4>
-            <label for="searchInput">Show sentiments for:</label>
-            <div class="input-group">            
-                <span class="input-group-addon">@</span>      
-                <input id="searchInput" 
-                       class="form-control" 
-                       type="search" 
-                       placeholder="Username" 
-                       [typeahead]="findUsers(getContext())"
-                       [typeaheadOptionsLimit]="20"
-                       (typeaheadOnSelect)="userSelected($event)"
-                       [(ngModel)]="searchText"> 
-                <span class="input-group-addon">
-                    <span class="fa fa-search" aria-hidden="true"></span>
-                </span>                
-
+        <form>
+            <div class="form-group">
+                <h4>Filter</h4>
+                <label for="searchInput">Show sentiments for:</label>
+                <div class="input-group">    
+                    <input id="searchInput" 
+                        class="form-control" 
+                        type="search" 
+                        placeholder="Username" 
+                        [typeahead]="findUsers(getContext())"
+                        [typeaheadOptionsLimit]="20"
+                        [typeaheadOptionField]="'name'"
+                        (typeaheadOnSelect)="userSelected($event)"
+                        [(ngModel)]="searchText"> 
+                    <span class="input-group-addon">
+                        <span class="fa fa-search" aria-hidden="true"></span>
+                    </span> 
+                </div>
             </div>
-        </div>
+        </form>
+        <ul>
+            <li *ngFor="let user of selectedUsers">{{user.name}}</li>
+        </ul>
     `,
     directives: [TYPEAHEAD_DIRECTIVES, CORE_DIRECTIVES, FORM_DIRECTIVES]
 })
@@ -54,8 +58,8 @@ export class SentimentFilterComponent {
         context.previousSearchText = context.searchText;
         let query = new RegExp(context.searchText, 'ig');
         
-        context.cache = context.socialService.searchTwitterUsers(context.searchText)
-                          .then(users => users.map((user) => user.name));
+        context.cache = context.socialService.searchTwitterUsers(context.searchText);
+                          //.then(users => users.map((user) => user.name));
                           
            
         return function() { return context.cache; };
@@ -63,6 +67,7 @@ export class SentimentFilterComponent {
     
     userSelected(event) {
         this.selectedUsers.push(event.item);        
+        this.searchText = "";
         this.usersChanged.emit(this.selectedUsers);
     }
     

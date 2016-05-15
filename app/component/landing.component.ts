@@ -20,8 +20,8 @@ import {SocialService} from "../service/social.service";
     <div class="container">
         <div class="rows">
             <div class="col-md-4">
-                <h2>Classify statuses</h2>
-                <p>Statuses fall under positive, negative or neutral</p>
+                <h2>Classify tweets</h2>
+                <p>Tweets are classified as positive, negative or neutral</p>
             </div>            
             <div class="col-md-4">
                 <h2>Compare moods</h2>
@@ -29,7 +29,7 @@ import {SocialService} from "../service/social.service";
             </div>            
             <div class="col-md-4">
                 <h2>Powered by Sentiment140</h2>
-                <p>Blah blah blah</p>
+                <p><a href="http://www.sentiment140.com/">Sentiment140</a> is a Twitter sentiment anaylsis tool.</p>
             </div>
         </div>
     </div>
