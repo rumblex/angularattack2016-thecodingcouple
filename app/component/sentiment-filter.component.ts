@@ -17,7 +17,7 @@ import { User } from '../model/user';
                        type="search" 
                        placeholder="Search users" 
                        [typeahead]="matchingUsers"
-                       [typeaheadOptionField]="name"
+                       [typeaheadOptionField]="'name'"
                        (typeaheadOnSelect)="userSelected($event)"
                        [(ngModel)]="searchText"
                        (keyup)="findUsers(searchText)"> 
@@ -35,7 +35,7 @@ export class SentimentFilterComponent {
     selectedUsers: User[];
     
     constructor(private socialService: SocialService) {
-        
+        this.matchingUsers = new Array();
     }
     
     findUsers(query) {

@@ -86,28 +86,33 @@ var SocialService = (function () {
     };
     SocialService.prototype.searchTwitterUsers = function (query) {
         return this.loginTwitter().then(function (twitter) {
-            var q = encodeURIComponent(query);
+            var q = query;
             var url = '1.1/users/search.json?q=';
             url += q;
             url += "&page=1&count=10";
             return new Promise(function (resolve, reject) {
-                return twitter.get(url)
-                    .done(function (response) {
-                    var users = new Array();
-                    response.forEach(function (entry) {
-                        users.push({
-                            id: entry.id,
-                            name: entry.name,
-                            profileImageUrl: entry.profile_image_url,
-                            username: entry.screen_name,
-                            url: "http://twitter.com/statuses/" + entry.id_str
+                if (query) {
+                    twitter.get(url)
+                        .done(function (response) {
+                        var users = new Array();
+                        response.forEach(function (entry) {
+                            users.push({
+                                id: entry.id,
+                                name: entry.name,
+                                profileImageUrl: entry.profile_image_url,
+                                username: entry.screen_name,
+                                url: "http://twitter.com/statuses/" + entry.id_str
+                            });
                         });
+                        resolve(users);
+                    })
+                        .fail(function (error) {
+                        reject(error);
                     });
-                    resolve(users);
-                })
-                    .fail(function (error) {
-                    reject(error);
-                });
+                }
+                else {
+                    resolve(new Array());
+                }
             });
         });
     };
