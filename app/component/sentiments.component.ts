@@ -21,11 +21,12 @@ import { SentimentService } from '../service/sentiment.service';
                         <h4>Percentage of Sentiments</h4>
                     </div>
                     <div class="col-md-6">
-                        <h4>Number of Sentiments</h4>
+                        <h4>Number of Sentiments <span class="badge">{{sentiments.length}}</span></h4>
                         <sentiment-count-summary [sentiments]="sentiments"></sentiment-count-summary>
                     </div>
                 </section>
                 <section class="col-md-12">
+                    <h4>Statuses</h4>
                     <sentiment-detail *ngFor="let sentiment of sentiments" [sentiment]="sentiment"></sentiment-detail>
                 </section>
             </section>

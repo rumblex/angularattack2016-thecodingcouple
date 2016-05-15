@@ -17,10 +17,6 @@ import { Sentiment } from '../model/sentiment';
                 <li class="list-group-item">
                     <span class="badge">{{numberOfNeutralSentiments}}</span>
                     Neutral
-                </li>                
-                <li class="list-group-item">
-                    <span class="badge">{{sentiments.length}}</span>
-                    Total
                 </li>
             </ul>
         </section>
@@ -31,14 +27,14 @@ export class SentimentCountSummaryComponent {
     sentiments: Sentiment[];
     
     get numberOfPositiveSentiments() {
-        return this.sentiments.find(sentiment => sentiment.polarity === "4");
+        return this.sentiments.filter(sentiment => sentiment.polarity === 4).length;
     }
     
     get numberOfNegativeSentiments() {        
-        return this.sentiments.find(sentiment => sentiment.polarity === "0");
+        return this.sentiments.filter(sentiment => sentiment.polarity === 0).length;
     }
     
     get numberOfNeutralSentiments() {        
-        return this.sentiments.find(sentiment => sentiment.polarity === "2");
+        return this.sentiments.filter(sentiment => sentiment.polarity === 2).length;
     }
 }

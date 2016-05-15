@@ -6,11 +6,11 @@ export class UserSentiments {
     sentimentsByDate:Sentiment[];
     
     get positiveSentiments() : Sentiment[] {
-        return this.sentimentsByDate.filter(s => s.polarity === "4");
+        return this.sentimentsByDate.filter(s => s.polarity === 4);
     }
     
     get negativeSentiments() : Sentiment[] {
-        return this.sentimentsByDate.filter(s => s.polarity === "0");
+        return this.sentimentsByDate.filter(s => s.polarity === 0);
     }
     
     get negativeCount() : number {

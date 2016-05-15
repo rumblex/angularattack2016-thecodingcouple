@@ -7,7 +7,7 @@
     'angular2-in-memory-web-api': 'node_modules/angular2-in-memory-web-api',
     '@angular':                   'node_modules/@angular',
     'oauth':                      'node_modules/oauthio-web/dist',
-    'moment':                     'node_modules/moment',
+    'ng2-bootstrap':              'node_modules/ng2-bootstrap',
   };
 
   // packages tells the System loader how to load when no filename and/or no extension
@@ -16,7 +16,7 @@
     'rxjs':                       { defaultExtension: 'js' },
     'angular2-in-memory-web-api': { defaultExtension: 'js' },
     'oauth':                      { defaultExtension: 'js' },
-    'moment':                     { defaultExtension: 'js'},
+    'ng2-bootstrap':              { defaultExtension: 'js' },
   };
 
   var packageNames = [
