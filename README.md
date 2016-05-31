@@ -1,48 +1,62 @@
-# This is your [AngularAttack](https://www.angularattack.com) 2016 Repo
+# angularattack2016-thecodingcouple
 
-This repo is the start of your AngularAttack 2016 entry. It contains the simple [Angular2 starter](https://angular.io/docs/ts/latest/quickstart.html) files.
+## Team Details
 
-**DO NOT MAKE ANY CODE CHECKINS TO THIS REPOSITORY BEFORE THE COMPETITION OFFICIALLY BEGINS.**
+### Team Name
 
-**DOING SO COULD DISQUALIFY YOU.**
+The Coding Couple
 
+### Description
 
-However, before the competition starts, there are some things we encourage you to do to get prepared for the competition.
+Husband and wife team trying to complete a hackathon while meeting the needs of a demanding toddler. 
 
+## Entry Details
 
-### Step 1) Get Your Local Environment setup
+### Entry Name
 
-Clone this repo locally, and make sure all your team members have access to it.
+Moody
 
-* Install the latest [Node / NPM](https://nodejs.org).
+### Quick Intro
 
-* `git clone git@github.com:rumblex/angularattack2016-thecodingcouple.git`
+The emotional polarity of your social network.
 
-* `cd angularattack2016-thecodingcouple`
+### Description 
 
-* `npm install`
+Get sentiments from your Twitter timeline, narrow it down to specific friends and see an overview of the emotional polarity. 
 
-* `npm start` will start the server locally to test that everything is running correctly
+![moody](http://www.thecodingcouple.com/wp-content/uploads/2016/05/angularattack2016-1.gif)
 
+### Instructions
 
-### Step 2) Deploy Your App
+The Moody web app does not run well on mobile devices.  Mobile Chrome has issues with the Twitter authentication popup. Android and mobile Safari only render the first item in the timeline.  For best results, use a desktop browser.
 
-While you can't make any checkins before the comp, what you **can** do right now is deploy this sample app to [Surge](https://surge.sh) (our competition hosting provider).
+#### Known Issues
+* The dropdown for the user search usually overextends its welcome
+* We have a cap on the number of api calls we can make via [OAuth.io](https://oauth.io/home).  If we reach the cap again, you can view our screencast on [YouTube](https://youtu.be/fq85ZYyuNA4) to see the web app in action. 
 
-* `npm install -g surge`
+### Resources
 
-* `surge .`
+#### APIs
+* [Twitter](https://twitter.com/)
+* [Sentiment140](http://www.sentiment140.com/)
 
-Note: please do not remove the `CNAME` file, as that tells it where to deploy to.
+#### Services
+* [Heroku](https://www.heroku.com/) (a CORS pass through for Sentiment140 in node.js)
+* [OAuth.io](https://oauth.io/home)
 
-If you receive an error message `"You do not have permission to publish to thecodingcouple.2016.angularattack.io"`, it might mean another team member has already deployed your project to Surge. Ask them to run the next step to give you access.
+#### Frameworks and Libraries
+* [Angular 2](https://angular.io/)
+* [Chart.js](http://www.chartjs.org/)
+* [ng2-bootstrap](http://valor-software.com/ng2-bootstrap/) (typeahead)
+* [Bootstrap 3](http://getbootstrap.com/)
+* [Font Awesome](http://fontawesome.io/?ref=FreeSourceLab)
+* [Vast Shadow Google Webfont](https://www.google.com/fonts#QuickUsePlace:quickUse)
 
-### Step 3) Add Your Team Members to Surge
+#### Skeletons
+* [Dan Wahlin's Angular 2 JumpStart](https://github.com/DanWahlin/Angular2-JumpStart)
 
-* `surge . --add nsipid@gmail.com,ashley.grenon@gmail.com`
-
-
-### Step 4) Wait til competition starts
-
-It begins at exactly [May 14 at 00:00 UTC](https://www.wolframalpha.com/input/?i=May+14,+2016+0:00+UTC). Once the competition starts,   you can write over this project.
-
+#### Tools
+* [Visual Studio Code](https://code.visualstudio.com/)
+* node
+* npm
+* [Adobe Kuler](https://color.adobe.com/create/color-wheel/)
